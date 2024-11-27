@@ -1,19 +1,68 @@
-# Get Started
+# 函数文档
 
-This is a normal page, which contains VuePress basics.
+欢迎您使用my-tools 函数库:tada:!
 
-## Pages
+## 防抖函数(debounce)
 
-You can add markdown files in your vuepress directory, every markdown file will be converted to a page in your site.
+确保一个函数在一定时间间隔内不会被重复调用，只有在经过规定的等待时间后没有再次触发事件，函数才会执行。
+
+### 1.引入该方法
+```ts title="App.vue"
+import {debounce} from '@gg233o-x/my-tools/dist/index';
+```
+
+### 2.使用示例如下
+```ts title="App.vue"
+const logFn = () => {
+  console.log('控制台输出啦');
+}
+// 第一个参数为 要添加防抖的函数
+// 第二个参数规定防抖时间
+
+const debounceFn = debounce(logFn,1000)  //返回一个防抖函数
+```
 
 See [routing][] for more details.
 
-## Content
+## 节流函数(throttle)
 
-Every markdown file [will be rendered to HTML, then converted to a Vue SFC][content].
+确保一个函数在一定时间间隔内不会被重复调用，只有在经过规定的等待时间后没有再次触发事件，函数才会执行。
 
-VuePress support basic markdown syntax and [some extensions][synatex-extensions], you can also [use Vue features][vue-feature] in it.
+### 1.引入该方法
+```ts title="App.vue"
+import {throttle} from '@gg233o-x/my-tools/dist/index';
+```
 
+### 2.使用示例如下
+```ts title="App.vue"
+const logFn = () => {
+  console.log('控制台输出啦');
+}
+// 第一个参数为 要添加节流的函数
+// 第二个参数规定节流时间
+
+const throttleFn = throttle(logFn,1000)  //返回一个节流函数
+```
+
+## 深拷贝(deepCopy)
+
+确保一个函数在一定时间间隔内不会被重复调用，只有在经过规定的等待时间后没有再次触发事件，函数才会执行。
+
+### 1.引入该方法
+```ts title="App.vue"
+import {deepCopy} from '@gg233o-x/my-tools/dist/index';
+```
+
+### 2.使用示例如下
+```ts title="App.vue"
+const obj1 = {son:{one:'base'}}
+const obj2 = deepCopy(obj1) // 将obj1 copy 赋值给obj2
+obj1.son.one = 'dataChange'
+console.log(obj2,'obj2');  //输出结果为 base
+console.log(obj1,'obj1'); // 输出结果为 dataChange
+
+//
+```
 ## Configuration
 
 VuePress use a `.vuepress/config.js`(or .ts) file as [site configuration][config], you can use it to config your site.

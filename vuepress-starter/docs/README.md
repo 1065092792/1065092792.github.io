@@ -1,14 +1,14 @@
 ---
 home: true
 title: Home
-heroImage: https://vuejs.press/images/hero.png
+heroImage: my-tools-logo.png
 actions:
-  - text: Get Started
-    link: /getting-started.html
+  - text: 文档查询
+    link: /get-started.html
     type: primary
 
-  - text: Introduction
-    link: https://vuejs.press/guide/introduction.html
+  - text: 项目地址
+    link: https://gitee.com/ZedGG233/my-tools
     type: secondary
 
 features:
