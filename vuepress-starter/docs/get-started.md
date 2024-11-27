@@ -22,7 +22,6 @@ const logFn = () => {
 const debounceFn = debounce(logFn,1000)  //返回一个防抖函数
 ```
 
-See [routing][] for more details.
 
 ## 节流函数(throttle)
 
