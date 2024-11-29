@@ -78,6 +78,34 @@ console.log(obj2,'obj2');
 // 输出原始对象 obj1，其嵌套属性的值已被修改为 'dataChange'
 console.log(obj1,'obj1'); 
 ```
+
+## 判断设备类型（checkDeviceType）
+
+判断设备类型函数用于精准识别用户当前所使用设备的操作系统类别，其返回值明确区分设备是运行 Android 系统、iOS 系统还是属于桌面端环境。这在开发多端适配应用或根据不同设备类型提供特定功能与体验的场景中极为关键，能够帮助开发者依据设备特性灵活调整应用逻辑与界面展示。
+
+### 1.引入该方法
+在 Vue 项目（以 App.vue 文件为例）中，引入判断设备类型函数的方式如下：
+
+```ts title="App.vue"
+import { checkDeviceType } from '@gg233o-x/my-tools';
+```
+
+### 2.使用示例如下
+```ts title="App.vue"
+// 调用 checkDeviceType 函数来获取设备类型
+const deviceType = checkDeviceType();
+
+// 根据返回的设备类型进行不同的操作，例如在控制台输出相应信息
+if (deviceType === 'Android') {
+  console.log('当前设备为 Android 系统。');
+} else if (deviceType === 'iOS') {
+  console.log('当前设备为 iOS 系统。');
+} else {
+  console.log('当前设备为桌面端。');
+}
+```
+
+
 ## Configuration
 
 VuePress use a `.vuepress/config.js`(or .ts) file as [site configuration][config], you can use it to config your site.
