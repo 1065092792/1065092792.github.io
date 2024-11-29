@@ -1,6 +1,6 @@
 <template><div><h1 id="函数文档" tabindex="-1"><a class="header-anchor" href="#函数文档"><span>函数文档</span></a></h1>
 <p>欢迎您使用my-tools 函数库🎉!</p>
-<h2 id="防抖函数-debounce" tabindex="-1"><a class="header-anchor" href="#防抖函数-debounce"><span>防抖函数(debounce)</span></a></h2>
+<h2 id="防抖-debounce" tabindex="-1"><a class="header-anchor" href="#防抖-debounce"><span>防抖(debounce)</span></a></h2>
 <p>防抖函数的作用是确保一个函数在特定的时间间隔内不会被重复调用。只有当经过规定的等待时间后且没有再次触发相关事件时，该函数才会被执行。这在处理例如用户频繁点击按钮、文本输入实时搜索等场景时，能够有效减少不必要的函数执行次数，提升性能和用户体验。</p>
 <h3 id="_1-引入该方法" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法"><span>1.引入该方法</span></a></h3>
 <p>在 Vue 项目（以 App.vue 文件为例）中，若要使用防抖函数，按如下方式从 @gg233o-x/my-tools 包中引入：</p>
@@ -10,6 +10,7 @@
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token comment">// 首先定义一个普通函数，这里是简单的控制台输出函数</span></span>
 <span class="line"><span class="token keyword">const</span> <span class="token function-variable function">logFn</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'控制台输出啦'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line">  </span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 第一个参数为要添加防抖的函数，即上面定义的 logFn</span></span>
@@ -17,7 +18,7 @@
 <span class="line"><span class="token keyword">const</span> debounceFn <span class="token operator">=</span> <span class="token function">debounce</span><span class="token punctuation">(</span>logFn<span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">)</span></span>
 <span class="line"><span class="token comment">// 当调用 debounceFn 时，它会等待 1000 毫秒，如果在这期间没有再次调用 debounceFn，才会执行 logFn 函数</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="节流函数-throttle" tabindex="-1"><a class="header-anchor" href="#节流函数-throttle"><span>节流函数(throttle)</span></a></h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="节流-throttle" tabindex="-1"><a class="header-anchor" href="#节流-throttle"><span>节流(throttle)</span></a></h2>
 <p>节流函数用于确保一个函数在特定的时间间隔内不会被过度频繁地调用。具体而言，只有在经过规定的等待时间后且在此期间没有再次触发相关事件时，该函数才会执行。这在处理诸如窗口大小调整、滚动事件等可能频繁触发的场景中非常有用，可以有效避免函数执行过于频繁而导致的性能问题。</p>
 <h3 id="_1-引入该方法-1" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-1"><span>1.引入该方法</span></a></h3>
 <p>在 Vue 项目（以 App.vue 文件为例）中，若要使用节流函数，需先从 @gg233o-x/my-tools 包中引入它。示例代码如下：</p>
@@ -67,13 +68,32 @@
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token comment">// 调用 checkDeviceType 函数来获取设备类型</span></span>
 <span class="line"><span class="token keyword">const</span> deviceType <span class="token operator">=</span> <span class="token function">checkDeviceType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
-<span class="line"><span class="token comment">// 根据返回的设备类型进行不同的操作，例如在控制台输出相应信息</span></span>
+<span class="line"><span class="token comment">// 根据返回的设备类型进行不同的操作</span></span>
 <span class="line"><span class="token keyword">if</span> <span class="token punctuation">(</span>deviceType <span class="token operator">===</span> <span class="token string">'Android'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'当前设备为 Android 系统。'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>deviceType <span class="token operator">===</span> <span class="token string">'iOS'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'当前设备为 iOS 系统。'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'当前设备为桌面端。'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="生成随机数-getrandom" tabindex="-1"><a class="header-anchor" href="#生成随机数-getrandom"><span>生成随机数（getRandom）</span></a></h2>
+<p>生成随机数函数用于在指定的数值范围内生成一个随机整数，可满足项目中各种需要随机取值的场景，比如随机生成索引、模拟随机数据等。</p>
+<h3 id="_1-引入该方法-4" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-4"><span>1.引入该方法</span></a></h3>
+<p>在 Vue 项目（以 App.vue 文件为例）中，引入生成随机数函数的方式如下：</p>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> getRandom <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_2-使用示例如下-4" tabindex="-1"><a class="header-anchor" href="#_2-使用示例如下-4"><span>2.使用示例如下</span></a></h3>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token comment">// 调用getRandom函数来生成一个介于1（包含）和10（包含）之间的随机整数</span></span>
+<span class="line"><span class="token keyword">const</span> randomNumber <span class="token operator">=</span> <span class="token function">getRandom</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">生成的随机数为: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>randomNumber<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">// 也可以根据生成的随机数进行不同的操作，以下是一个简单示例，假设根据随机数决定是否显示某个元素</span></span>
+<span class="line"><span class="token keyword">if</span> <span class="token punctuation">(</span>randomNumber <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'随机数为偶数，执行相关操作，比如显示某个元素。'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'随机数为奇数，执行其他相关操作，比如隐藏某个元素。'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="configuration" tabindex="-1"><a class="header-anchor" href="#configuration"><span>Configuration</span></a></h2>

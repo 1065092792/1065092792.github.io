@@ -2,7 +2,7 @@
 
 欢迎您使用my-tools 函数库:tada:!
 
-## 防抖函数(debounce)
+## 防抖(debounce)
 
 防抖函数的作用是确保一个函数在特定的时间间隔内不会被重复调用。只有当经过规定的等待时间后且没有再次触发相关事件时，该函数才会被执行。这在处理例如用户频繁点击按钮、文本输入实时搜索等场景时，能够有效减少不必要的函数执行次数，提升性能和用户体验。
 
@@ -17,6 +17,7 @@ import {debounce} from '@gg233o-x/my-tools';
 // 首先定义一个普通函数，这里是简单的控制台输出函数
 const logFn = () => {
   console.log('控制台输出啦');
+  
 }
 
 // 第一个参数为要添加防抖的函数，即上面定义的 logFn
@@ -24,9 +25,7 @@ const logFn = () => {
 const debounceFn = debounce(logFn,1000)
 // 当调用 debounceFn 时，它会等待 1000 毫秒，如果在这期间没有再次调用 debounceFn，才会执行 logFn 函数
 ```
-
-
-## 节流函数(throttle)
+## 节流(throttle)
 
 节流函数用于确保一个函数在特定的时间间隔内不会被过度频繁地调用。具体而言，只有在经过规定的等待时间后且在此期间没有再次触发相关事件时，该函数才会执行。这在处理诸如窗口大小调整、滚动事件等可能频繁触发的场景中非常有用，可以有效避免函数执行过于频繁而导致的性能问题。
 
@@ -95,7 +94,7 @@ import { checkDeviceType } from '@gg233o-x/my-tools';
 // 调用 checkDeviceType 函数来获取设备类型
 const deviceType = checkDeviceType();
 
-// 根据返回的设备类型进行不同的操作，例如在控制台输出相应信息
+// 根据返回的设备类型进行不同的操作
 if (deviceType === 'Android') {
   console.log('当前设备为 Android 系统。');
 } else if (deviceType === 'iOS') {
@@ -105,6 +104,33 @@ if (deviceType === 'Android') {
 }
 ```
 
+
+## 生成随机数（getRandom）
+
+生成随机数函数用于在指定的数值范围内生成一个随机整数，可满足项目中各种需要随机取值的场景，比如随机生成索引、模拟随机数据等。
+
+### 1.引入该方法
+在 Vue 项目（以 App.vue 文件为例）中，引入生成随机数函数的方式如下：
+
+```ts title="App.vue"
+import { getRandom } from '@gg233o-x/my-tools';
+```
+
+### 2.使用示例如下
+```ts title="App.vue" 
+// 调用getRandom函数来生成一个介于1（包含）和10（包含）之间的随机整数
+const randomNumber = getRandom(1, 10);
+
+console.log(`生成的随机数为: ${randomNumber}`);
+
+// 也可以根据生成的随机数进行不同的操作，以下是一个简单示例，假设根据随机数决定是否显示某个元素
+if (randomNumber % 2 === 0) {
+  console.log('随机数为偶数，执行相关操作，比如显示某个元素。');
+} else {
+  console.log('随机数为奇数，执行其他相关操作，比如隐藏某个元素。');
+}
+```
+ 
 
 ## Configuration
 
