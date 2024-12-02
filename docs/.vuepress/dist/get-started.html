@@ -22,7 +22,7 @@
       const userMode = localStorage.getItem('vuepress-color-scheme')
       const systemDarkMode =
         'matchMedia' in window
-          ? window.matchMedia('(prefers-color-scheme: dark)').matches 
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
           : false
 
       if (userMode === 'light') {
