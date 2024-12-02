@@ -1,6 +1,6 @@
 {
   "name": "my-tools-document",
-  "version": "1.0.4",
+  "version": "1.2.8",
   "description": "Some commonly used front-end utility functions are simple and easy to use.",
   "license": "GPL",
   "type": "module",

@@ -130,6 +130,74 @@ if (randomNumber % 2 === 0) {
   console.log('随机数为奇数，执行其他相关操作，比如隐藏某个元素。');
 }
 ```
+
+## 扁平转树（toTree）
+
+扁平转树函数用于将给定的扁平数据结构高效地转换为树状数据结构，使得数据呈现出清晰的父子层级关系。。
+### 1.引入该方法
+在 Vue 项目（以 App.vue 文件为例）中，引入扁平转树函数的方式如下：
+
+```ts title="App.vue"
+import { toTree } from '@gg233o-x/my-tools';
+```
+
+### 2.输入参数
+#### `data` 参数
+- **类型**：`Array`
+- **描述**：需要用户传入一个扁平化数据。
+
+#### `idKey` 参数（可选）
+- **类型**：`string`
+- **默认值**：`id`
+- **描述**：用于指定在扁平数据节点对象中作为节点唯一标识的键名。
+
+#### `parentIdKey` 参数（可选）
+- **类型**：`string`
+- **默认值**：`parentId`
+- **描述**：用于指定在扁平数据节点对象中作为父节点标识的键名。
+
+
+### 3.使用示例如下
+
+```ts title="App.vue" 
+const data = [
+{ "id": 1, "name": "用户中心", "orderNum": 1, "parentId": 0 },
+{ "id": 2, "name": "订单中心", "orderNum": 2, "parentId": 0 },
+{ "id": 3, "name": "系统管理", "orderNum": 3, "parentId": 0 },
+{ "id": 12, "name": "所有订单", "orderNum": 1, "parentId": 2 },
+{ "id": 14, "name": "待发货", "orderNum": 1.2, "parentId": 2 },
+{ "id": 15, "name": "订单导出", "orderNum": 2, "parentId": 2 },
+{ "id": 18, "name": "菜单设置", "orderNum": 1, "parentId": 3 },
+{ "id": 19, "name": "权限管理", "orderNum": 2, "parentId": 3 },
+{ "id": 21, "name": "系统权限", "orderNum": 1, "parentId": 19 },
+{ "id": 22, "name": "角色设置", "orderNum": 2, "parentId": 19 },
+];
+
+console.log(toTree(data)); // 打印转树后的数据
+```
+
+::: tip
+用户自定义节点 代码实例如下：
+:::
+```ts title="App.vue" 
+
+const data = [
+{ "ID": 1, "name": "用户中心", "orderNum": 1, "pid": 0 },
+{ "ID": 2, "name": "订单中心", "orderNum": 2, "pid": 0 },
+{ "ID": 3, "name": "系统管理", "orderNum": 3, "pid": 0 },
+{ "ID": 12, "name": "所有订单", "orderNum": 1, "pid": 2 },
+{ "ID": 14, "name": "待发货", "orderNum": 1.2, "pid": 2 },
+{ "ID": 15, "name": "订单导出", "orderNum": 2, "pid": 2 },
+{ "ID": 18, "name": "菜单设置", "orderNum": 1, "pid": 3 },
+{ "ID": 19, "name": "权限管理", "orderNum": 2, "pid": 3 },
+{ "ID": 21, "name": "系统权限", "orderNum": 1, "pid": 19 },
+{ "ID": 22, "name": "角色设置", "orderNum": 2, "pid": 19 },
+];
+
+console.log(toTree(data,'ID','pid')); // 打印转树后的数据
+```
+
+
  
 
 ## Configuration
