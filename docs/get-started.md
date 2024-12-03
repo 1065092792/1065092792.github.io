@@ -17,7 +17,6 @@ import {debounce} from '@gg233o-x/my-tools';
 // 首先定义一个普通函数，这里是简单的控制台输出函数
 const logFn = () => {
   console.log('控制台输出啦');
-  
 }
 
 // 第一个参数为要添加防抖的函数，即上面定义的 logFn

@@ -1,7 +1,7 @@
 ---
 home: true
 title: Home
-heroImage: my-tools-logo.png
+heroImage: ./images/my-tools-logo.png
 actions:
   - text: 文档查询
     link: /get-started.html

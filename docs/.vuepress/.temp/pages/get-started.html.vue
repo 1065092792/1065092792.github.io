@@ -10,7 +10,6 @@
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token comment">// 首先定义一个普通函数，这里是简单的控制台输出函数</span></span>
 <span class="line"><span class="token keyword">const</span> <span class="token function-variable function">logFn</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'控制台输出啦'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
-<span class="line">  </span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span>
 <span class="line"><span class="token comment">// 第一个参数为要添加防抖的函数，即上面定义的 logFn</span></span>
@@ -18,7 +17,7 @@
 <span class="line"><span class="token keyword">const</span> debounceFn <span class="token operator">=</span> <span class="token function">debounce</span><span class="token punctuation">(</span>logFn<span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">)</span></span>
 <span class="line"><span class="token comment">// 当调用 debounceFn 时，它会等待 1000 毫秒，如果在这期间没有再次调用 debounceFn，才会执行 logFn 函数</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="节流-throttle" tabindex="-1"><a class="header-anchor" href="#节流-throttle"><span>节流(throttle)</span></a></h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="节流-throttle" tabindex="-1"><a class="header-anchor" href="#节流-throttle"><span>节流(throttle)</span></a></h2>
 <p>节流函数用于确保一个函数在特定的时间间隔内不会被过度频繁地调用。具体而言，只有在经过规定的等待时间后且在此期间没有再次触发相关事件时，该函数才会执行。这在处理诸如窗口大小调整、滚动事件等可能频繁触发的场景中非常有用，可以有效避免函数执行过于频繁而导致的性能问题。</p>
 <h3 id="_1-引入该方法-1" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-1"><span>1.引入该方法</span></a></h3>
 <p>在 Vue 项目（以 App.vue 文件为例）中，若要使用节流函数，需先从 @gg233o-x/my-tools 包中引入它。示例代码如下：</p>
