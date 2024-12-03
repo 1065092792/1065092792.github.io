@@ -1,12 +1,12 @@
 <template><div><h1 id="函数文档" tabindex="-1"><a class="header-anchor" href="#函数文档"><span>函数文档</span></a></h1>
 <p>欢迎您使用my-tools 函数库🎉!</p>
-<h2 id="防抖-debounce" tabindex="-1"><a class="header-anchor" href="#防抖-debounce"><span>防抖(debounce)</span></a></h2>
+<h3 id="防抖-debounce" tabindex="-1"><a class="header-anchor" href="#防抖-debounce"><span>防抖(debounce)</span></a></h3>
 <p>防抖函数的作用是确保一个函数在特定的时间间隔内不会被重复调用。只有当经过规定的等待时间后且没有再次触发相关事件时，该函数才会被执行。这在处理例如用户频繁点击按钮、文本输入实时搜索等场景时，能够有效减少不必要的函数执行次数，提升性能和用户体验。</p>
-<h3 id="_1-引入该方法" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法"><span>1.引入该方法</span></a></h3>
+<h4 id="_1-引入该方法" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法"><span>1.引入该方法</span></a></h4>
 <p>在 Vue 项目（以 App.vue 文件为例）中，若要使用防抖函数，按如下方式从 @gg233o-x/my-tools 包中引入：</p>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span>debounce<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_2-使用示例如下" tabindex="-1"><a class="header-anchor" href="#_2-使用示例如下"><span>2.使用示例如下</span></a></h3>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-使用示例如下" tabindex="-1"><a class="header-anchor" href="#_2-使用示例如下"><span>2.使用示例如下</span></a></h4>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token comment">// 首先定义一个普通函数，这里是简单的控制台输出函数</span></span>
 <span class="line"><span class="token keyword">const</span> <span class="token function-variable function">logFn</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'控制台输出啦'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
@@ -17,13 +17,13 @@
 <span class="line"><span class="token keyword">const</span> debounceFn <span class="token operator">=</span> <span class="token function">debounce</span><span class="token punctuation">(</span>logFn<span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">)</span></span>
 <span class="line"><span class="token comment">// 当调用 debounceFn 时，它会等待 1000 毫秒，如果在这期间没有再次调用 debounceFn，才会执行 logFn 函数</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="节流-throttle" tabindex="-1"><a class="header-anchor" href="#节流-throttle"><span>节流(throttle)</span></a></h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="节流-throttle" tabindex="-1"><a class="header-anchor" href="#节流-throttle"><span>节流(throttle)</span></a></h3>
 <p>节流函数用于确保一个函数在特定的时间间隔内不会被过度频繁地调用。具体而言，只有在经过规定的等待时间后且在此期间没有再次触发相关事件时，该函数才会执行。这在处理诸如窗口大小调整、滚动事件等可能频繁触发的场景中非常有用，可以有效避免函数执行过于频繁而导致的性能问题。</p>
-<h3 id="_1-引入该方法-1" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-1"><span>1.引入该方法</span></a></h3>
+<h4 id="_1-引入该方法-1" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-1"><span>1.引入该方法</span></a></h4>
 <p>在 Vue 项目（以 App.vue 文件为例）中，若要使用节流函数，需先从 @gg233o-x/my-tools 包中引入它。示例代码如下：</p>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span>throttle<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_2-使用示例如下-1" tabindex="-1"><a class="header-anchor" href="#_2-使用示例如下-1"><span>2.使用示例如下</span></a></h3>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-使用示例如下-1" tabindex="-1"><a class="header-anchor" href="#_2-使用示例如下-1"><span>2.使用示例如下</span></a></h4>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">const</span> <span class="token function-variable function">logFn</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'控制台输出啦'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
@@ -35,13 +35,13 @@
 <span class="line"><span class="token comment">// 当我们触发相关事件（例如某个按钮点击事件或者页面滚动事件等，具体取决于实际应用场景）调用throttleFn时，</span></span>
 <span class="line"><span class="token comment">// 它会按照节流规则执行，即每隔1000毫秒才会真正执行一次logFn函数</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="深拷贝-deepcopy" tabindex="-1"><a class="header-anchor" href="#深拷贝-deepcopy"><span>深拷贝(deepCopy)</span></a></h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="深拷贝-deepcopy" tabindex="-1"><a class="header-anchor" href="#深拷贝-deepcopy"><span>深拷贝(deepCopy)</span></a></h3>
 <p>深拷贝函数用于创建一个原始对象的全新副本，新副本与原始对象在内存中完全独立，对原始对象的任何修改都不会影响到深拷贝后的对象，反之亦然。这在处理复杂数据结构（如嵌套对象、数组等）时非常关键，能够避免数据的意外篡改和副作用。</p>
-<h3 id="_1-引入该方法-2" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-2"><span>1.引入该方法</span></a></h3>
+<h4 id="_1-引入该方法-2" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-2"><span>1.引入该方法</span></a></h4>
 <p>在 Vue 项目（以 App.vue 文件为例）中，引入深拷贝函数的方式如下：</p>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span>deepCopy<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_2-使用示例如下-2" tabindex="-1"><a class="header-anchor" href="#_2-使用示例如下-2"><span>2.使用示例如下</span></a></h3>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-使用示例如下-2" tabindex="-1"><a class="header-anchor" href="#_2-使用示例如下-2"><span>2.使用示例如下</span></a></h4>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token comment">// 首先创建一个包含嵌套对象的示例对象 obj1</span></span>
 <span class="line"><span class="token keyword">const</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span>son<span class="token operator">:</span><span class="token punctuation">{</span>one<span class="token operator">:</span><span class="token string">'base'</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
@@ -57,13 +57,13 @@
 <span class="line"><span class="token comment">// 输出原始对象 obj1，其嵌套属性的值已被修改为 'dataChange'</span></span>
 <span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj1<span class="token punctuation">,</span><span class="token string">'obj1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="判断设备类型-checkdevicetype" tabindex="-1"><a class="header-anchor" href="#判断设备类型-checkdevicetype"><span>判断设备类型（checkDeviceType）</span></a></h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="判断设备类型-checkdevicetype" tabindex="-1"><a class="header-anchor" href="#判断设备类型-checkdevicetype"><span>判断设备类型（checkDeviceType）</span></a></h3>
 <p>判断设备类型函数用于精准识别用户当前所使用设备的操作系统类别，其返回值明确区分设备是运行 Android 系统、iOS 系统还是属于桌面端环境。这在开发多端适配应用或根据不同设备类型提供特定功能与体验的场景中极为关键，能够帮助开发者依据设备特性灵活调整应用逻辑与界面展示。</p>
-<h3 id="_1-引入该方法-3" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-3"><span>1.引入该方法</span></a></h3>
+<h4 id="_1-引入该方法-3" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-3"><span>1.引入该方法</span></a></h4>
 <p>在 Vue 项目（以 App.vue 文件为例）中，引入判断设备类型函数的方式如下：</p>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> checkDeviceType <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_2-使用示例如下-3" tabindex="-1"><a class="header-anchor" href="#_2-使用示例如下-3"><span>2.使用示例如下</span></a></h3>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-使用示例如下-3" tabindex="-1"><a class="header-anchor" href="#_2-使用示例如下-3"><span>2.使用示例如下</span></a></h4>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token comment">// 调用 checkDeviceType 函数来获取设备类型</span></span>
 <span class="line"><span class="token keyword">const</span> deviceType <span class="token operator">=</span> <span class="token function">checkDeviceType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
@@ -76,13 +76,13 @@
 <span class="line">  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'当前设备为桌面端。'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="生成随机数-getrandom" tabindex="-1"><a class="header-anchor" href="#生成随机数-getrandom"><span>生成随机数（getRandom）</span></a></h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="生成随机数-getrandom" tabindex="-1"><a class="header-anchor" href="#生成随机数-getrandom"><span>生成随机数（getRandom）</span></a></h3>
 <p>生成随机数函数用于在指定的数值范围内生成一个随机整数，可满足项目中各种需要随机取值的场景，比如随机生成索引、模拟随机数据等。</p>
-<h3 id="_1-引入该方法-4" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-4"><span>1.引入该方法</span></a></h3>
+<h4 id="_1-引入该方法-4" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-4"><span>1.引入该方法</span></a></h4>
 <p>在 Vue 项目（以 App.vue 文件为例）中，引入生成随机数函数的方式如下：</p>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> getRandom <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_2-使用示例如下-4" tabindex="-1"><a class="header-anchor" href="#_2-使用示例如下-4"><span>2.使用示例如下</span></a></h3>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-使用示例如下-4" tabindex="-1"><a class="header-anchor" href="#_2-使用示例如下-4"><span>2.使用示例如下</span></a></h4>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token comment">// 调用getRandom函数来生成一个介于1（包含）和10（包含）之间的随机整数</span></span>
 <span class="line"><span class="token keyword">const</span> randomNumber <span class="token operator">=</span> <span class="token function">getRandom</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"></span>
@@ -95,31 +95,31 @@
 <span class="line">  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'随机数为奇数，执行其他相关操作，比如隐藏某个元素。'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="扁平转树-totree" tabindex="-1"><a class="header-anchor" href="#扁平转树-totree"><span>扁平转树（toTree）</span></a></h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="扁平转树-totree" tabindex="-1"><a class="header-anchor" href="#扁平转树-totree"><span>扁平转树（toTree）</span></a></h3>
 <p>扁平转树函数用于将给定的扁平数据结构高效地转换为树状数据结构，使得数据呈现出清晰的父子层级关系。。</p>
-<h3 id="_1-引入该方法-5" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-5"><span>1.引入该方法</span></a></h3>
+<h4 id="_1-引入该方法-5" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-5"><span>1.引入该方法</span></a></h4>
 <p>在 Vue 项目（以 App.vue 文件为例）中，引入扁平转树函数的方式如下：</p>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> toTree <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3 id="_2-输入参数" tabindex="-1"><a class="header-anchor" href="#_2-输入参数"><span>2.输入参数</span></a></h3>
-<h4 id="data-参数" tabindex="-1"><a class="header-anchor" href="#data-参数"><span><code v-pre>data</code> 参数</span></a></h4>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数" tabindex="-1"><a class="header-anchor" href="#_2-输入参数"><span>2.输入参数</span></a></h4>
+<h5 id="data-参数" tabindex="-1"><a class="header-anchor" href="#data-参数"><span><code v-pre>data</code> 参数</span></a></h5>
 <ul>
 <li><strong>类型</strong>：<code v-pre>Array</code></li>
 <li><strong>描述</strong>：需要用户传入一个扁平化数据。</li>
 </ul>
-<h4 id="idkey-参数-可选" tabindex="-1"><a class="header-anchor" href="#idkey-参数-可选"><span><code v-pre>idKey</code> 参数（可选）</span></a></h4>
+<h5 id="idkey-参数-可选" tabindex="-1"><a class="header-anchor" href="#idkey-参数-可选"><span><code v-pre>idKey</code> 参数（可选）</span></a></h5>
 <ul>
 <li><strong>类型</strong>：<code v-pre>string</code></li>
 <li><strong>默认值</strong>：<code v-pre>id</code></li>
 <li><strong>描述</strong>：用于指定在扁平数据节点对象中作为节点唯一标识的键名。</li>
 </ul>
-<h4 id="parentidkey-参数-可选" tabindex="-1"><a class="header-anchor" href="#parentidkey-参数-可选"><span><code v-pre>parentIdKey</code> 参数（可选）</span></a></h4>
+<h5 id="parentidkey-参数-可选" tabindex="-1"><a class="header-anchor" href="#parentidkey-参数-可选"><span><code v-pre>parentIdKey</code> 参数（可选）</span></a></h5>
 <ul>
 <li><strong>类型</strong>：<code v-pre>string</code></li>
 <li><strong>默认值</strong>：<code v-pre>parentId</code></li>
 <li><strong>描述</strong>：用于指定在扁平数据节点对象中作为父节点标识的键名。</li>
 </ul>
-<h3 id="_3-使用示例如下" tabindex="-1"><a class="header-anchor" href="#_3-使用示例如下"><span>3.使用示例如下</span></a></h3>
+<h4 id="_3-使用示例如下" tabindex="-1"><a class="header-anchor" href="#_3-使用示例如下"><span>3.使用示例如下</span></a></h4>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">[</span></span>
 <span class="line"><span class="token punctuation">{</span> <span class="token string-property property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string-property property">"name"</span><span class="token operator">:</span> <span class="token string">"用户中心"</span><span class="token punctuation">,</span> <span class="token string-property property">"orderNum"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string-property property">"parentId"</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">{</span> <span class="token string-property property">"id"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string-property property">"name"</span><span class="token operator">:</span> <span class="token string">"订单中心"</span><span class="token punctuation">,</span> <span class="token string-property property">"orderNum"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string-property property">"parentId"</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
@@ -155,7 +155,25 @@
 <span class="line"></span>
 <span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">toTree</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span><span class="token string">'ID'</span><span class="token punctuation">,</span><span class="token string">'pid'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印转树后的数据</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="configuration" tabindex="-1"><a class="header-anchor" href="#configuration"><span>Configuration</span></a></h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="数组方法" tabindex="-1"><a class="header-anchor" href="#数组方法"><span>数组方法</span></a></h2>
+<h3 id="数组乱序-disorderarray" tabindex="-1"><a class="header-anchor" href="#数组乱序-disorderarray"><span>数组乱序（disorderArray）</span></a></h3>
+<p>数组乱序函数旨在对给定的数组进行随机打乱操作，改变数组元素原本的顺序，使其呈现出无序的状态，方便在诸如随机排序、模拟随机情况等场景下使用。</p>
+<h4 id="_1-引入该方法-6" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-6"><span>1.引入该方法</span></a></h4>
+<p>在 Vue 项目（以 App.vue 文件为例）中，引入数组乱序函数的方式如下：</p>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> disorderArray <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数-1" tabindex="-1"><a class="header-anchor" href="#_2-输入参数-1"><span>2.输入参数</span></a></h4>
+<h5 id="arr-参数" tabindex="-1"><a class="header-anchor" href="#arr-参数"><span><code v-pre>arr</code> 参数</span></a></h5>
+<ul>
+<li><strong>类型</strong>：<code v-pre>Array</code></li>
+<li><strong>描述</strong>：用户需要传入一个希望进行乱序操作的数组。无论数组元素是何种类型，函数都会尝试对其顺序进行打乱处理。</li>
+</ul>
+<h4 id="_3-使用示例如下-1" tabindex="-1"><a class="header-anchor" href="#_3-使用示例如下-1"><span>3.使用示例如下</span></a></h4>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token keyword">undefined</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">,</span><span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">'str'</span><span class="token punctuation">]</span></span>
+<span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">disorderArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">toTree</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印乱序后的数组</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="configuration" tabindex="-1"><a class="header-anchor" href="#configuration"><span>Configuration</span></a></h2>
 <p>VuePress use a <code v-pre>.vuepress/config.js</code>(or .ts) file as <a href="https://vuejs.press/guide/configuration.html#client-config-file" target="_blank" rel="noopener noreferrer">site configuration</a>, you can use it to config your site.</p>
 <p>For <a href="https://vuejs.press/guide/configuration.html#client-config-file" target="_blank" rel="noopener noreferrer">client side configuration</a>, you can create <code v-pre>.vuepress/client.js</code>(or .ts).</p>
 <p>Meanwhile, you can also add configuration per page with <a href="https://vuejs.press/guide/page.html#frontmatter" target="_blank" rel="noopener noreferrer">frontmatter</a>.</p>

@@ -2,17 +2,17 @@
 
 欢迎您使用my-tools 函数库:tada:!
 
-## 防抖(debounce)
+### 防抖(debounce)
 
 防抖函数的作用是确保一个函数在特定的时间间隔内不会被重复调用。只有当经过规定的等待时间后且没有再次触发相关事件时，该函数才会被执行。这在处理例如用户频繁点击按钮、文本输入实时搜索等场景时，能够有效减少不必要的函数执行次数，提升性能和用户体验。
 
-### 1.引入该方法
+#### 1.引入该方法
 在 Vue 项目（以 App.vue 文件为例）中，若要使用防抖函数，按如下方式从 @gg233o-x/my-tools 包中引入：
 ```ts title="App.vue"
 import {debounce} from '@gg233o-x/my-tools';
 ```
 
-### 2.使用示例如下
+#### 2.使用示例如下
 ```ts title="App.vue"
 // 首先定义一个普通函数，这里是简单的控制台输出函数
 const logFn = () => {
@@ -24,17 +24,17 @@ const logFn = () => {
 const debounceFn = debounce(logFn,1000)
 // 当调用 debounceFn 时，它会等待 1000 毫秒，如果在这期间没有再次调用 debounceFn，才会执行 logFn 函数
 ```
-## 节流(throttle)
+### 节流(throttle)
 
 节流函数用于确保一个函数在特定的时间间隔内不会被过度频繁地调用。具体而言，只有在经过规定的等待时间后且在此期间没有再次触发相关事件时，该函数才会执行。这在处理诸如窗口大小调整、滚动事件等可能频繁触发的场景中非常有用，可以有效避免函数执行过于频繁而导致的性能问题。
 
-### 1.引入该方法
+#### 1.引入该方法
 在 Vue 项目（以 App.vue 文件为例）中，若要使用节流函数，需先从 @gg233o-x/my-tools 包中引入它。示例代码如下：
 ```ts title="App.vue"
 import {throttle} from '@gg233o-x/my-tools';
 ```
 
-### 2.使用示例如下
+#### 2.使用示例如下
 ```ts title="App.vue"
 const logFn = () => {
   console.log('控制台输出啦');
@@ -48,18 +48,18 @@ const throttleFn = throttle(logFn,1000)
 // 它会按照节流规则执行，即每隔1000毫秒才会真正执行一次logFn函数
 ```
 
-## 深拷贝(deepCopy)
+### 深拷贝(deepCopy)
 
 深拷贝函数用于创建一个原始对象的全新副本，新副本与原始对象在内存中完全独立，对原始对象的任何修改都不会影响到深拷贝后的对象，反之亦然。这在处理复杂数据结构（如嵌套对象、数组等）时非常关键，能够避免数据的意外篡改和副作用。
 
 
-### 1.引入该方法
+#### 1.引入该方法
 在 Vue 项目（以 App.vue 文件为例）中，引入深拷贝函数的方式如下：
 ```ts title="App.vue"
 import {deepCopy} from '@gg233o-x/my-tools';
 ```
 
-### 2.使用示例如下
+#### 2.使用示例如下
 ```ts title="App.vue"
 // 首先创建一个包含嵌套对象的示例对象 obj1
 const obj1 = {son:{one:'base'}};
@@ -77,18 +77,18 @@ console.log(obj2,'obj2');
 console.log(obj1,'obj1'); 
 ```
 
-## 判断设备类型（checkDeviceType）
+### 判断设备类型（checkDeviceType）
 
 判断设备类型函数用于精准识别用户当前所使用设备的操作系统类别，其返回值明确区分设备是运行 Android 系统、iOS 系统还是属于桌面端环境。这在开发多端适配应用或根据不同设备类型提供特定功能与体验的场景中极为关键，能够帮助开发者依据设备特性灵活调整应用逻辑与界面展示。
 
-### 1.引入该方法
+#### 1.引入该方法
 在 Vue 项目（以 App.vue 文件为例）中，引入判断设备类型函数的方式如下：
 
 ```ts title="App.vue"
 import { checkDeviceType } from '@gg233o-x/my-tools';
 ```
 
-### 2.使用示例如下
+#### 2.使用示例如下
 ```ts title="App.vue"
 // 调用 checkDeviceType 函数来获取设备类型
 const deviceType = checkDeviceType();
@@ -104,18 +104,18 @@ if (deviceType === 'Android') {
 ```
 
 
-## 生成随机数（getRandom）
+### 生成随机数（getRandom）
 
 生成随机数函数用于在指定的数值范围内生成一个随机整数，可满足项目中各种需要随机取值的场景，比如随机生成索引、模拟随机数据等。
 
-### 1.引入该方法
+#### 1.引入该方法
 在 Vue 项目（以 App.vue 文件为例）中，引入生成随机数函数的方式如下：
 
 ```ts title="App.vue"
 import { getRandom } from '@gg233o-x/my-tools';
 ```
 
-### 2.使用示例如下
+#### 2.使用示例如下
 ```ts title="App.vue" 
 // 调用getRandom函数来生成一个介于1（包含）和10（包含）之间的随机整数
 const randomNumber = getRandom(1, 10);
@@ -130,33 +130,33 @@ if (randomNumber % 2 === 0) {
 }
 ```
 
-## 扁平转树（toTree）
+### 扁平转树（toTree）
 
 扁平转树函数用于将给定的扁平数据结构高效地转换为树状数据结构，使得数据呈现出清晰的父子层级关系。。
-### 1.引入该方法
+#### 1.引入该方法
 在 Vue 项目（以 App.vue 文件为例）中，引入扁平转树函数的方式如下：
 
 ```ts title="App.vue"
 import { toTree } from '@gg233o-x/my-tools';
 ```
 
-### 2.输入参数
-#### `data` 参数
+#### 2.输入参数
+##### `data` 参数
 - **类型**：`Array`
 - **描述**：需要用户传入一个扁平化数据。
 
-#### `idKey` 参数（可选）
+##### `idKey` 参数（可选）
 - **类型**：`string`
 - **默认值**：`id`
 - **描述**：用于指定在扁平数据节点对象中作为节点唯一标识的键名。
 
-#### `parentIdKey` 参数（可选）
+##### `parentIdKey` 参数（可选）
 - **类型**：`string`
 - **默认值**：`parentId`
 - **描述**：用于指定在扁平数据节点对象中作为父节点标识的键名。
 
 
-### 3.使用示例如下
+#### 3.使用示例如下
 
 ```ts title="App.vue" 
 const data = [
@@ -198,7 +198,31 @@ console.log(toTree(data,'ID','pid')); // 打印转树后的数据
 
 
  
+## 数组方法
 
+### 数组乱序（disorderArray）
+
+数组乱序函数旨在对给定的数组进行随机打乱操作，改变数组元素原本的顺序，使其呈现出无序的状态，方便在诸如随机排序、模拟随机情况等场景下使用。
+
+#### 1.引入该方法
+在 Vue 项目（以 App.vue 文件为例）中，引入数组乱序函数的方式如下：
+
+```ts title="App.vue"
+import { disorderArray } from '@gg233o-x/my-tools';
+```
+
+#### 2.输入参数
+##### `arr` 参数
+- **类型**：`Array`
+- **描述**：用户需要传入一个希望进行乱序操作的数组。无论数组元素是何种类型，函数都会尝试对其顺序进行打乱处理。
+
+#### 3.使用示例如下
+
+```ts title="App.vue" 
+const arr = [1,2,3,4,5,6,7,8,9,undefined,null,function fn(){},'str']
+console.log(disorderArray(arr));
+console.log(toTree(data)); // 打印乱序后的数组
+```
 ## Configuration
 
 VuePress use a `.vuepress/config.js`(or .ts) file as [site configuration][config], you can use it to config your site.
