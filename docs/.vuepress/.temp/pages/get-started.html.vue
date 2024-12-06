@@ -109,13 +109,13 @@
 </ul>
 <h5 id="idkey-参数-可选" tabindex="-1"><a class="header-anchor" href="#idkey-参数-可选"><span><code v-pre>idKey</code> 参数（可选）</span></a></h5>
 <ul>
-<li><strong>类型</strong>：<code v-pre>string</code></li>
+<li><strong>类型</strong>：<code v-pre>String</code></li>
 <li><strong>默认值</strong>：<code v-pre>id</code></li>
 <li><strong>描述</strong>：用于指定在扁平数据节点对象中作为节点唯一标识的键名。</li>
 </ul>
 <h5 id="parentidkey-参数-可选" tabindex="-1"><a class="header-anchor" href="#parentidkey-参数-可选"><span><code v-pre>parentIdKey</code> 参数（可选）</span></a></h5>
 <ul>
-<li><strong>类型</strong>：<code v-pre>string</code></li>
+<li><strong>类型</strong>：<code v-pre>String</code></li>
 <li><strong>默认值</strong>：<code v-pre>parentId</code></li>
 <li><strong>描述</strong>：用于指定在扁平数据节点对象中作为父节点标识的键名。</li>
 </ul>
@@ -188,18 +188,63 @@
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line">  <span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">''</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">,</span><span class="token keyword">undefined</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span></span>
 <span class="line">  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">compactArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出结果 [10,20]</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="configuration" tabindex="-1"><a class="header-anchor" href="#configuration"><span>Configuration</span></a></h2>
-<p>VuePress use a <code v-pre>.vuepress/config.js</code>(or .ts) file as <a href="https://vuejs.press/guide/configuration.html#client-config-file" target="_blank" rel="noopener noreferrer">site configuration</a>, you can use it to config your site.</p>
-<p>For <a href="https://vuejs.press/guide/configuration.html#client-config-file" target="_blank" rel="noopener noreferrer">client side configuration</a>, you can create <code v-pre>.vuepress/client.js</code>(or .ts).</p>
-<p>Meanwhile, you can also add configuration per page with <a href="https://vuejs.press/guide/page.html#frontmatter" target="_blank" rel="noopener noreferrer">frontmatter</a>.</p>
-<h2 id="layouts-and-customization" tabindex="-1"><a class="header-anchor" href="#layouts-and-customization"><span>Layouts and customization</span></a></h2>
-<p>Here are common configuration controlling layout of <code v-pre>@vuepress/theme-default</code>:</p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="函数方法" tabindex="-1"><a class="header-anchor" href="#函数方法"><span>函数方法</span></a></h2>
+<h3 id="函数调用次数限制执行-callnexec" tabindex="-1"><a class="header-anchor" href="#函数调用次数限制执行-callnexec"><span>函数调用次数限制执行（callNExec）</span></a></h3>
+<p><code v-pre>callNExec</code> 函数能够限制另一个函数的执行时机，仅当该函数被调用达到指定次数后，才会触发预先设定的函数执行操作，从而有效控制函数的调用频率与执行逻辑。</p>
+<h4 id="_1-引入该方法-8" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-8"><span>1.引入该方法</span></a></h4>
+<p>在基于 Vue 的项目中（以 <code v-pre>App.vue</code> 文件为例），引入 <code v-pre>callNExec</code> 函数的方式如下：</p>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> callNExec <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数-3" tabindex="-1"><a class="header-anchor" href="#_2-输入参数-3"><span>2.输入参数</span></a></h4>
+<h5 id="threshold-参数" tabindex="-1"><a class="header-anchor" href="#threshold-参数"><span><code v-pre>threshold</code> 参数</span></a></h5>
 <ul>
-<li><a href="https://vuejs.press/reference/default-theme/config.html#navbar" target="_blank" rel="noopener noreferrer">navbar</a></li>
-<li><a href="https://vuejs.press/reference/default-theme/config.html#sidebar" target="_blank" rel="noopener noreferrer">sidebar</a></li>
+<li><strong>类型</strong>：<code v-pre>Number</code></li>
+<li><strong>描述</strong>：设定的函数被调用次数阈值。</li>
 </ul>
-<p>Check <a href="https://vuejs.press/reference/default-theme/" target="_blank" rel="noopener noreferrer">default theme docs</a> for full reference.</p>
-<p>You can <a href="https://vuejs.press/reference/default-theme/styles.html#style-file" target="_blank" rel="noopener noreferrer">add extra style</a> with <code v-pre>.vuepress/styles/index.scss</code> file.</p>
-</div></template>
+<h5 id="func-参数" tabindex="-1"><a class="header-anchor" href="#func-参数"><span><code v-pre>func</code> 参数</span></a></h5>
+<ul>
+<li><strong>类型</strong>：<code v-pre>Function</code></li>
+<li><strong>描述</strong>：当函数被调用 n 次后需要执行的函数。</li>
+</ul>
+<h4 id="_3-使用示例如下-3" tabindex="-1"><a class="header-anchor" href="#_3-使用示例如下-3"><span>3.使用示例如下</span></a></h4>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">const</span> <span class="token function-variable function">fn</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'执行'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"><span class="token keyword">const</span> testFn <span class="token operator">=</span> <span class="token function">callNExec</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> fn<span class="token punctuation">)</span>   <span class="token comment">// 每调用10次执行 则执行一次fn函数</span></span>
+<span class="line"></span>
+<span class="line"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> index <span class="token operator">&lt;=</span> <span class="token number">30</span><span class="token punctuation">;</span> index<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span></span>
+<span class="line">  <span class="token function">testFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="line"><span class="token punctuation">}</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><!-- ## Configuration
+
+VuePress use a `.vuepress/config.js`(or .ts) file as [site configuration][config], you can use it to config your site.
+
+For [client side configuration][client-config], you can create `.vuepress/client.js`(or .ts).
+
+Meanwhile, you can also add configuration per page with [frontmatter][].
+
+## Layouts and customization
+
+Here are common configuration controlling layout of `@vuepress/theme-default`:
+
+- [navbar][]
+- [sidebar][]
+
+Check [default theme docs][default-theme] for full reference.
+
+You can [add extra style][style] with `.vuepress/styles/index.scss` file.
+
+[routing]: https://vuejs.press/guide/page.html#routing
+[content]: https://vuejs.press/guide/page.html#content
+[synatex-extensions]: https://vuejs.press/guide/markdown.html#syntax-extensions
+[vue-feature]: https://vuejs.press/guide/markdown.html#using-vue-in-markdown
+[config]: https://vuejs.press/guide/configuration.html#client-config-file
+[client-config]: https://vuejs.press/guide/configuration.html#client-config-file
+[frontmatter]: https://vuejs.press/guide/page.html#frontmatter
+[navbar]: https://vuejs.press/reference/default-theme/config.html#navbar
+[sidebar]: https://vuejs.press/reference/default-theme/config.html#sidebar
+[default-theme]: https://vuejs.press/reference/default-theme/
+[style]: https://vuejs.press/reference/default-theme/styles.html#style-file --></div></template>
 
 

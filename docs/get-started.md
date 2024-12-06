@@ -146,12 +146,12 @@ import { toTree } from '@gg233o-x/my-tools';
 - **描述**：需要用户传入一个扁平化数据。
 
 ##### `idKey` 参数（可选）
-- **类型**：`string`
+- **类型**：`String`
 - **默认值**：`id`
 - **描述**：用于指定在扁平数据节点对象中作为节点唯一标识的键名。
 
 ##### `parentIdKey` 参数（可选）
-- **类型**：`string`
+- **类型**：`String`
 - **默认值**：`parentId`
 - **描述**：用于指定在扁平数据节点对象中作为父节点标识的键名。
 
@@ -246,7 +246,46 @@ import { compactArray } from '@gg233o-x/my-tools';
   const arr = ['',false,null,undefined,0,10,20]
   console.log(compactArray(arr)); // 输出结果 [10,20]
 ```
-## Configuration
+
+## 函数方法
+
+### 函数调用次数限制执行（callNExec）
+
+`callNExec` 函数能够限制另一个函数的执行时机，仅当该函数被调用达到指定次数后，才会触发预先设定的函数执行操作，从而有效控制函数的调用频率与执行逻辑。
+
+#### 1.引入该方法
+在基于 Vue 的项目中（以 `App.vue` 文件为例），引入 `callNExec` 函数的方式如下：
+
+```ts title="App.vue"
+import callNExec from '@gg233o-x/my-tools';
+```
+
+#### 2.输入参数
+##### `threshold` 参数
+- **类型**：`Number`
+- **描述**：设定的函数被调用次数阈值。
+
+##### `func` 参数
+- **类型**：`Function`
+- **描述**：当函数被调用 n 次后需要执行的函数。
+
+#### 3.使用示例如下
+
+```ts title="App.vue" 
+const fn = () => {
+  console.log('执行');
+}
+const testFn = callNExec(10, fn)   // 每调用10次执行 则执行一次fn函数
+
+for (let index = 0; index <= 30; index++) {
+  testFn()
+}
+```
+
+
+
+
+<!-- ## Configuration
 
 VuePress use a `.vuepress/config.js`(or .ts) file as [site configuration][config], you can use it to config your site.
 
@@ -275,4 +314,4 @@ You can [add extra style][style] with `.vuepress/styles/index.scss` file.
 [navbar]: https://vuejs.press/reference/default-theme/config.html#navbar
 [sidebar]: https://vuejs.press/reference/default-theme/config.html#sidebar
 [default-theme]: https://vuejs.press/reference/default-theme/
-[style]: https://vuejs.press/reference/default-theme/styles.html#style-file
+[style]: https://vuejs.press/reference/default-theme/styles.html#style-file -->
