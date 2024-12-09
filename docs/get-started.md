@@ -77,6 +77,67 @@ console.log(obj2,'obj2');
 console.log(obj1,'obj1'); 
 ```
 
+### 时间格式化函数（formatDate）
+
+`formatDate` 函数是一个用于对日期时间进行灵活格式化，并可按需进行时间偏移操作的实用函数，它能帮助开发者方便地将 Date 对象按照指定格式转化为符合要求的字符串表示形式，同时支持根据给定的时间偏移量获取相对的过去或未来的时间后再进行格式化。
+#### 1.引入该方法
+在 Vue 项目（以 `App.vue` 文件为例）中，引入时间格式化函数的方式如下：
+
+```ts title="App.vue"
+import { formatDate } from '@gg233o-x/my-tools';
+```
+
+#### 2.输入参数
+##### `date` 参数
+- **类型**：`Date`
+- **描述**：需要用户传入一个要进行格式化以及可能的时间偏移操作的日期时间对象。
+
+##### `format` 参数
+- **类型**：`String`
+- **默认值**：`id`
+- **描述**：用于指定日期时间最终的输出格式，格式字符串中可以包含特定的占位符（如 `YYYY`、`MM`、`DD`、`hh`、`mm`、`ss`），这些占位符会在函数内部被替换为对应的实际时间分量的字符串表示形式。例如，`'YYYY-MM-DD    hh:mm:ss'` 表示输出的格式会是类似 `2024-12-09 15:30:00` 的形式，展示完整的年、月、日、时、分、秒信息；而 `'MM/DD/YYYY'` 则会输出如 `12/09/2024` 的格式，按照月、日、年的顺序展示日期部分并用 `/` 进行分隔。
+
+##### `offset` 参数（可选）
+- **类型**：`Object`
+- **默认值**：`{}`
+- **描述**：此参数是可选的，用于指定相对于传入的 date 的时间偏移情况，正数表示未来的时间，负数表示过去的时间。包含以下四个可选属性：
+
+    | 属性名 | 类型 | 描述 |
+    | ---- | ---- | ---- |
+    | `days` | `number`（可选） | 用于指定日数的偏移量。`{ days: 3 }` 会使日期往后推 3 天。 |
+    | `weeks` | `number`（可选） | 用于指定周数的偏移量。例如，`{ weeks: 1 }` 表示时间往后推一周（即获取下一周对应的时间），`{ weeks: -1 }` 则表示往前推一周（获取上一周对应的时间）。|
+    | `months` | `number`（可选） | 用于指定月数的偏移量。像 `{ months: 2 }` 会使日期往后推 2 个月，传入负数则获取过去月份对应的日期。|
+    | `years` | `number`（可选） | 用于指定年数的偏移量。比如 `{ years: 1 }` 能获取到明年对应的日期，传入负数则获取过去年份对应的日期。 |
+
+#### 3.使用示例如下
+
+```ts title="App.vue" 
+// 示例1：格式化当前时间，无偏移量，格式为 'YYYY-MM-DD'
+const now = new Date();
+const formattedNow = formatDate(now, 'YYYY-MM-DD');
+console.log('当前时间格式化：', formattedNow);
+
+// 示例2：获取上一周的今天，格式为 'YYYY-MM-DD'
+const lastWeek = formatDate(now, 'YYYY-MM-DD', { weeks: -1 });
+console.log('上一周的今天：', lastWeek);
+
+// 示例3：获取下个月的今天，格式为 'YYYY-MM-DD'
+const nextMonth = formatDate(now, 'YYYY-MM-DD', { months: 1 });
+console.log('下个月的今天：', nextMonth);
+
+// 示例4：获取明年的今天，格式为 'YYYY-MM-DD'
+const nextYear = formatDate(now, 'YYYY-MM-DD', { years: 1 });
+console.log('明年的今天：', nextYear);
+
+// 示例5：自定义格式并进行时间偏移，包含日数偏移
+const customFormatAndOffset = formatDate(now, 'MM/DD/YYYY hh:mm', { weeks: 2, months: 3, years: 1, days: 5 });
+console.log('自定义格式及偏移量的结果：', customFormatAndOffset);
+
+// 示例6：仅格式化时间中的时分秒部分，无时间偏移，格式为 'hh:mm:ss'
+const timeOnly = formatDate(new Date(), 'hh:mm:ss');
+console.log('仅时间部分格式化：', timeOnly);
+```
+
 ### 判断设备类型（checkDeviceType）
 
 `checkDeviceType` 函数用于精准识别用户当前所使用设备的操作系统类别，其返回值明确区分设备是运行 `Android` 系统、`iOS` 系统还是属于`桌面端环境`。这在开发多端适配应用或根据不同设备类型提供特定功能与体验的场景中极为关键，能够帮助开发者依据设备特性灵活调整应用逻辑与界面展示。

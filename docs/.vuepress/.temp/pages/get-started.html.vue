@@ -57,9 +57,96 @@
 <span class="line"><span class="token comment">// 输出原始对象 obj1，其嵌套属性的值已被修改为 'dataChange'</span></span>
 <span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj1<span class="token punctuation">,</span><span class="token string">'obj1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="判断设备类型-checkdevicetype" tabindex="-1"><a class="header-anchor" href="#判断设备类型-checkdevicetype"><span>判断设备类型（checkDeviceType）</span></a></h3>
-<p><code v-pre>checkDeviceType</code> 函数用于精准识别用户当前所使用设备的操作系统类别，其返回值明确区分设备是运行 <code v-pre>Android</code> 系统、<code v-pre>iOS</code> 系统还是属于<code v-pre>桌面端环境</code>。这在开发多端适配应用或根据不同设备类型提供特定功能与体验的场景中极为关键，能够帮助开发者依据设备特性灵活调整应用逻辑与界面展示。</p>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="时间格式化函数-formatdate" tabindex="-1"><a class="header-anchor" href="#时间格式化函数-formatdate"><span>时间格式化函数（formatDate）</span></a></h3>
+<p><code v-pre>formatDate</code> 函数是一个用于对日期时间进行灵活格式化，并可按需进行时间偏移操作的实用函数，它能帮助开发者方便地将 Date 对象按照指定格式转化为符合要求的字符串表示形式，同时支持根据给定的时间偏移量获取相对的过去或未来的时间后再进行格式化。</p>
 <h4 id="_1-引入该方法-3" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-3"><span>1.引入该方法</span></a></h4>
+<p>在 Vue 项目（以 <code v-pre>App.vue</code> 文件为例）中，引入时间格式化函数的方式如下：</p>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> formatDate <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数" tabindex="-1"><a class="header-anchor" href="#_2-输入参数"><span>2.输入参数</span></a></h4>
+<h5 id="date-参数" tabindex="-1"><a class="header-anchor" href="#date-参数"><span><code v-pre>date</code> 参数</span></a></h5>
+<ul>
+<li><strong>类型</strong>：<code v-pre>Date</code></li>
+<li><strong>描述</strong>：需要用户传入一个要进行格式化以及可能的时间偏移操作的日期时间对象。</li>
+</ul>
+<h5 id="format-参数" tabindex="-1"><a class="header-anchor" href="#format-参数"><span><code v-pre>format</code> 参数</span></a></h5>
+<ul>
+<li><strong>类型</strong>：<code v-pre>String</code></li>
+<li><strong>默认值</strong>：<code v-pre>id</code></li>
+<li><strong>描述</strong>：用于指定日期时间最终的输出格式，格式字符串中可以包含特定的占位符（如 <code v-pre>YYYY</code>、<code v-pre>MM</code>、<code v-pre>DD</code>、<code v-pre>hh</code>、<code v-pre>mm</code>、<code v-pre>ss</code>），这些占位符会在函数内部被替换为对应的实际时间分量的字符串表示形式。例如，<code v-pre>'YYYY-MM-DD    hh:mm:ss'</code> 表示输出的格式会是类似 <code v-pre>2024-12-09 15:30:00</code> 的形式，展示完整的年、月、日、时、分、秒信息；而 <code v-pre>'MM/DD/YYYY'</code> 则会输出如 <code v-pre>12/09/2024</code> 的格式，按照月、日、年的顺序展示日期部分并用 <code v-pre>/</code> 进行分隔。</li>
+</ul>
+<h5 id="offset-参数-可选" tabindex="-1"><a class="header-anchor" href="#offset-参数-可选"><span><code v-pre>offset</code> 参数（可选）</span></a></h5>
+<ul>
+<li>
+<p><strong>类型</strong>：<code v-pre>Object</code></p>
+</li>
+<li>
+<p><strong>默认值</strong>：<code v-pre>{}</code></p>
+</li>
+<li>
+<p><strong>描述</strong>：此参数是可选的，用于指定相对于传入的 date 的时间偏移情况，正数表示未来的时间，负数表示过去的时间。包含以下四个可选属性：</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>days</code></td>
+<td><code v-pre>number</code>（可选）</td>
+<td>用于指定日数的偏移量。<code v-pre>{ days: 3 }</code> 会使日期往后推 3 天。</td>
+</tr>
+<tr>
+<td><code v-pre>weeks</code></td>
+<td><code v-pre>number</code>（可选）</td>
+<td>用于指定周数的偏移量。例如，<code v-pre>{ weeks: 1 }</code> 表示时间往后推一周（即获取下一周对应的时间），<code v-pre>{ weeks: -1 }</code> 则表示往前推一周（获取上一周对应的时间）。</td>
+</tr>
+<tr>
+<td><code v-pre>months</code></td>
+<td><code v-pre>number</code>（可选）</td>
+<td>用于指定月数的偏移量。像 <code v-pre>{ months: 2 }</code> 会使日期往后推 2 个月，传入负数则获取过去月份对应的日期。</td>
+</tr>
+<tr>
+<td><code v-pre>years</code></td>
+<td><code v-pre>number</code>（可选）</td>
+<td>用于指定年数的偏移量。比如 <code v-pre>{ years: 1 }</code> 能获取到明年对应的日期，传入负数则获取过去年份对应的日期。</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h4 id="_3-使用示例如下" tabindex="-1"><a class="header-anchor" href="#_3-使用示例如下"><span>3.使用示例如下</span></a></h4>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token comment">// 示例1：格式化当前时间，无偏移量，格式为 'YYYY-MM-DD'</span></span>
+<span class="line"><span class="token keyword">const</span> now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token keyword">const</span> formattedNow <span class="token operator">=</span> <span class="token function">formatDate</span><span class="token punctuation">(</span>now<span class="token punctuation">,</span> <span class="token string">'YYYY-MM-DD'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'当前时间格式化：'</span><span class="token punctuation">,</span> formattedNow<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">// 示例2：获取上一周的今天，格式为 'YYYY-MM-DD'</span></span>
+<span class="line"><span class="token keyword">const</span> lastWeek <span class="token operator">=</span> <span class="token function">formatDate</span><span class="token punctuation">(</span>now<span class="token punctuation">,</span> <span class="token string">'YYYY-MM-DD'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> weeks<span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'上一周的今天：'</span><span class="token punctuation">,</span> lastWeek<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">// 示例3：获取下个月的今天，格式为 'YYYY-MM-DD'</span></span>
+<span class="line"><span class="token keyword">const</span> nextMonth <span class="token operator">=</span> <span class="token function">formatDate</span><span class="token punctuation">(</span>now<span class="token punctuation">,</span> <span class="token string">'YYYY-MM-DD'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> months<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'下个月的今天：'</span><span class="token punctuation">,</span> nextMonth<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">// 示例4：获取明年的今天，格式为 'YYYY-MM-DD'</span></span>
+<span class="line"><span class="token keyword">const</span> nextYear <span class="token operator">=</span> <span class="token function">formatDate</span><span class="token punctuation">(</span>now<span class="token punctuation">,</span> <span class="token string">'YYYY-MM-DD'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> years<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'明年的今天：'</span><span class="token punctuation">,</span> nextYear<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">// 示例5：自定义格式并进行时间偏移，包含日数偏移</span></span>
+<span class="line"><span class="token keyword">const</span> customFormatAndOffset <span class="token operator">=</span> <span class="token function">formatDate</span><span class="token punctuation">(</span>now<span class="token punctuation">,</span> <span class="token string">'MM/DD/YYYY hh:mm'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> weeks<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> months<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> years<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> days<span class="token operator">:</span> <span class="token number">5</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'自定义格式及偏移量的结果：'</span><span class="token punctuation">,</span> customFormatAndOffset<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="token comment">// 示例6：仅格式化时间中的时分秒部分，无时间偏移，格式为 'hh:mm:ss'</span></span>
+<span class="line"><span class="token keyword">const</span> timeOnly <span class="token operator">=</span> <span class="token function">formatDate</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'hh:mm:ss'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'仅时间部分格式化：'</span><span class="token punctuation">,</span> timeOnly<span class="token punctuation">)</span><span class="token punctuation">;</span></span>
+<span class="line"></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="判断设备类型-checkdevicetype" tabindex="-1"><a class="header-anchor" href="#判断设备类型-checkdevicetype"><span>判断设备类型（checkDeviceType）</span></a></h3>
+<p><code v-pre>checkDeviceType</code> 函数用于精准识别用户当前所使用设备的操作系统类别，其返回值明确区分设备是运行 <code v-pre>Android</code> 系统、<code v-pre>iOS</code> 系统还是属于<code v-pre>桌面端环境</code>。这在开发多端适配应用或根据不同设备类型提供特定功能与体验的场景中极为关键，能够帮助开发者依据设备特性灵活调整应用逻辑与界面展示。</p>
+<h4 id="_1-引入该方法-4" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-4"><span>1.引入该方法</span></a></h4>
 <p>在 Vue 项目（以 <code v-pre>App.vue</code> 文件为例）中，引入判断设备类型函数的方式如下：</p>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> checkDeviceType <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
@@ -78,7 +165,7 @@
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="生成随机数-getrandom" tabindex="-1"><a class="header-anchor" href="#生成随机数-getrandom"><span>生成随机数（getRandom）</span></a></h3>
 <p><code v-pre>getRandom</code> 函数用于在指定的数值范围内生成一个随机整数，可满足项目中各种需要随机取值的场景，比如随机生成索引、模拟随机数据等。</p>
-<h4 id="_1-引入该方法-4" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-4"><span>1.引入该方法</span></a></h4>
+<h4 id="_1-引入该方法-5" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-5"><span>1.引入该方法</span></a></h4>
 <p>在 Vue 项目（以 <code v-pre>App.vue</code> 文件为例）中，引入生成随机数函数的方式如下：</p>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> getRandom <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
@@ -97,11 +184,11 @@
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="扁平转树-totree" tabindex="-1"><a class="header-anchor" href="#扁平转树-totree"><span>扁平转树（toTree）</span></a></h3>
 <p><code v-pre>toTree</code> 函数用于将给定的扁平数据结构高效地转换为树状数据结构，使得数据呈现出清晰的父子层级关系。。</p>
-<h4 id="_1-引入该方法-5" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-5"><span>1.引入该方法</span></a></h4>
+<h4 id="_1-引入该方法-6" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-6"><span>1.引入该方法</span></a></h4>
 <p>在 Vue 项目（以 <code v-pre>App.vue</code> 文件为例）中，引入扁平转树函数的方式如下：</p>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> toTree <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数" tabindex="-1"><a class="header-anchor" href="#_2-输入参数"><span>2.输入参数</span></a></h4>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数-1" tabindex="-1"><a class="header-anchor" href="#_2-输入参数-1"><span>2.输入参数</span></a></h4>
 <h5 id="data-参数" tabindex="-1"><a class="header-anchor" href="#data-参数"><span><code v-pre>data</code> 参数</span></a></h5>
 <ul>
 <li><strong>类型</strong>：<code v-pre>Array</code></li>
@@ -119,7 +206,7 @@
 <li><strong>默认值</strong>：<code v-pre>parentId</code></li>
 <li><strong>描述</strong>：用于指定在扁平数据节点对象中作为父节点标识的键名。</li>
 </ul>
-<h4 id="_3-使用示例如下" tabindex="-1"><a class="header-anchor" href="#_3-使用示例如下"><span>3.使用示例如下</span></a></h4>
+<h4 id="_3-使用示例如下-1" tabindex="-1"><a class="header-anchor" href="#_3-使用示例如下-1"><span>3.使用示例如下</span></a></h4>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">[</span></span>
 <span class="line"><span class="token punctuation">{</span> <span class="token string-property property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string-property property">"name"</span><span class="token operator">:</span> <span class="token string">"用户中心"</span><span class="token punctuation">,</span> <span class="token string-property property">"orderNum"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string-property property">"parentId"</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
 <span class="line"><span class="token punctuation">{</span> <span class="token string-property property">"id"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string-property property">"name"</span><span class="token operator">:</span> <span class="token string">"订单中心"</span><span class="token punctuation">,</span> <span class="token string-property property">"orderNum"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string-property property">"parentId"</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></span>
@@ -158,44 +245,44 @@
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="数组方法" tabindex="-1"><a class="header-anchor" href="#数组方法"><span>数组方法</span></a></h2>
 <h3 id="数组乱序-disorderarray" tabindex="-1"><a class="header-anchor" href="#数组乱序-disorderarray"><span>数组乱序（disorderArray）</span></a></h3>
 <p><code v-pre>disorderArray</code> 函数旨在对给定的数组进行随机打乱操作，改变数组元素原本的顺序，使其呈现出无序的状态，方便在诸如随机排序、模拟随机情况等场景下使用。</p>
-<h4 id="_1-引入该方法-6" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-6"><span>1.引入该方法</span></a></h4>
+<h4 id="_1-引入该方法-7" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-7"><span>1.引入该方法</span></a></h4>
 <p>在 Vue 项目（以 <code v-pre>App.vue</code> 文件为例）中，引入数组乱序函数的方式如下：</p>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> disorderArray <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数-1" tabindex="-1"><a class="header-anchor" href="#_2-输入参数-1"><span>2.输入参数</span></a></h4>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数-2" tabindex="-1"><a class="header-anchor" href="#_2-输入参数-2"><span>2.输入参数</span></a></h4>
 <h5 id="arr-参数" tabindex="-1"><a class="header-anchor" href="#arr-参数"><span><code v-pre>arr</code> 参数</span></a></h5>
 <ul>
 <li><strong>类型</strong>：<code v-pre>Array</code></li>
 <li><strong>描述</strong>：用户需要传入一个希望进行乱序操作的数组。无论数组元素是何种类型，函数都会尝试对其顺序进行打乱处理。</li>
 </ul>
-<h4 id="_3-使用示例如下-1" tabindex="-1"><a class="header-anchor" href="#_3-使用示例如下-1"><span>3.使用示例如下</span></a></h4>
+<h4 id="_3-使用示例如下-2" tabindex="-1"><a class="header-anchor" href="#_3-使用示例如下-2"><span>3.使用示例如下</span></a></h4>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token keyword">undefined</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">,</span><span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">'str'</span><span class="token punctuation">]</span></span>
 <span class="line"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">disorderArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 打印乱序后的数组</span></span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="数组滤假值-compactarray" tabindex="-1"><a class="header-anchor" href="#数组滤假值-compactarray"><span>数组滤假值（compactArray）</span></a></h3>
 <p><code v-pre>compactArray</code> 函数旨在对输入的数组进行过滤处理，它会精准地去除数组中那些在 JavaScript 里被视作 “假值” 的元素，包含 <code v-pre>false</code>、<code v-pre>null</code>、<code v-pre>0</code>、<code v-pre>&quot;&quot;</code>（空字符串）、<code v-pre>undefined</code> 和 <code v-pre>NaN</code> 等，只留下 “真值” 元素，以此生成一个新的数组。</p>
-<h4 id="_1-引入该方法-7" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-7"><span>1.引入该方法</span></a></h4>
+<h4 id="_1-引入该方法-8" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-8"><span>1.引入该方法</span></a></h4>
 <p>在基于 Vue 的项目中（以 <code v-pre>App.vue</code> 文件为例），引入 <code v-pre>compactArray</code> 函数的方式如下：</p>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> compactArray <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数-2" tabindex="-1"><a class="header-anchor" href="#_2-输入参数-2"><span>2.输入参数</span></a></h4>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数-3" tabindex="-1"><a class="header-anchor" href="#_2-输入参数-3"><span>2.输入参数</span></a></h4>
 <h5 id="arr-参数-1" tabindex="-1"><a class="header-anchor" href="#arr-参数-1"><span><code v-pre>arr</code> 参数</span></a></h5>
 <ul>
 <li><strong>类型</strong>：<code v-pre>Array</code></li>
 <li><strong>描述</strong>：用户需要向函数提供一个想要进行滤假值操作的目标数组。</li>
 </ul>
-<h4 id="_3-使用示例如下-2" tabindex="-1"><a class="header-anchor" href="#_3-使用示例如下-2"><span>3.使用示例如下</span></a></h4>
+<h4 id="_3-使用示例如下-3" tabindex="-1"><a class="header-anchor" href="#_3-使用示例如下-3"><span>3.使用示例如下</span></a></h4>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line">  <span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">''</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">,</span><span class="token keyword">undefined</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">]</span></span>
 <span class="line">  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">compactArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出结果 [10,20]</span></span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="函数方法" tabindex="-1"><a class="header-anchor" href="#函数方法"><span>函数方法</span></a></h2>
 <h3 id="函数调用次数限制执行-callnexec" tabindex="-1"><a class="header-anchor" href="#函数调用次数限制执行-callnexec"><span>函数调用次数限制执行（callNExec）</span></a></h3>
 <p><code v-pre>callNExec</code> 函数能够限制另一个函数的执行时机，仅当该函数被调用达到指定次数后，才会触发预先设定的函数执行操作，从而有效控制函数的调用频率与执行逻辑。</p>
-<h4 id="_1-引入该方法-8" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-8"><span>1.引入该方法</span></a></h4>
+<h4 id="_1-引入该方法-9" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-9"><span>1.引入该方法</span></a></h4>
 <p>在基于 Vue 的项目中（以 <code v-pre>App.vue</code> 文件为例），引入 <code v-pre>callNExec</code> 函数的方式如下：</p>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> callNExec <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数-3" tabindex="-1"><a class="header-anchor" href="#_2-输入参数-3"><span>2.输入参数</span></a></h4>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数-4" tabindex="-1"><a class="header-anchor" href="#_2-输入参数-4"><span>2.输入参数</span></a></h4>
 <h5 id="threshold-参数" tabindex="-1"><a class="header-anchor" href="#threshold-参数"><span><code v-pre>threshold</code> 参数</span></a></h5>
 <ul>
 <li><strong>类型</strong>：<code v-pre>Number</code></li>
@@ -206,7 +293,7 @@
 <li><strong>类型</strong>：<code v-pre>Function</code></li>
 <li><strong>描述</strong>：当函数被调用 n 次后需要执行的函数。</li>
 </ul>
-<h4 id="_3-使用示例如下-3" tabindex="-1"><a class="header-anchor" href="#_3-使用示例如下-3"><span>3.使用示例如下</span></a></h4>
+<h4 id="_3-使用示例如下-4" tabindex="-1"><a class="header-anchor" href="#_3-使用示例如下-4"><span>3.使用示例如下</span></a></h4>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">const</span> <span class="token function-variable function">fn</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
 <span class="line">  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'执行'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>
 <span class="line"><span class="token punctuation">}</span></span>
