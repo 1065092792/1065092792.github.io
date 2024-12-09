@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.18" />
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
+
+      [data-theme='dark'] {
+        --vp-c-bg: #1b1b1f;
+      }
+
+      html,
+      body {
+        background-color: var(--vp-c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme')
+      const systemDarkMode =
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
+
+      if (userMode === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (userMode === 'dark' || systemDarkMode) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+    <link rel="icon" href="./images/my-tools-logo.png"><title>my-tools</title><meta name="description" content="轻量高效、简易易用，集数据处理、字符串操作等多功能于一体的实用函数库。">
+    <link rel="preload" href="/./assets/style-CLc_edxi.css" as="style"><link rel="stylesheet" href="/./assets/style-CLc_edxi.css">
+    <link rel="modulepreload" href="/./assets/app-BvHE7Ieb.js"><link rel="modulepreload" href="/./assets/404.html-BFF98B56.js">
+    <link rel="prefetch" href="/./assets/index.html-D1nw0vLp.js" as="script"><link rel="prefetch" href="/./assets/get-started.html-BwuS01dF.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="vp-theme-container" vp-container data-v-573b4b77><main class="page" data-v-573b4b77><div class="theme-default-content" vp-content data-v-573b4b77><h1 data-v-573b4b77>404</h1><blockquote data-v-573b4b77>There&#39;s nothing here.</blockquote><a class="route-link" href="/./" data-v-573b4b77>Take me home</a></div></main></div><!--[--><!----><!--]--><!--]--></div>
+    <script type="module" src="/./assets/app-BvHE7Ieb.js" defer></script>
+  </body>
+</html>
