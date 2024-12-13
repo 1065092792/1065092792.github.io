@@ -1,15 +1,15 @@
 # 函数文档
 
-欢迎您使用my-tools 函数库:tada:!
+欢迎您使用tools-pad 函数库:tada:!
 
 ### 防抖(debounce)
 
 `debounce` 函数的作用是确保一个函数在特定的时间间隔内不会被重复调用。只有当经过规定的等待时间后且没有再次触发相关事件时，该函数才会被执行。这在处理例如用户频繁点击按钮、文本输入实时搜索等场景时，能够有效减少不必要的函数执行次数，提升性能和用户体验。
 
 #### 1.引入该方法
-在 Vue 项目（以 `App.vue` 文件为例）中，若要使用防抖函数，按如下方式从 @gg233o-x/my-tools 包中引入：
+在 Vue 项目（以 `App.vue` 文件为例）中，若要使用防抖函数，按如下方式从 toolspad 包中引入：
 ```ts title="App.vue"
-import {debounce} from '@gg233o-x/my-tools';
+import {debounce} from 'toolspad';
 ```
 
 #### 2.使用示例如下
@@ -29,9 +29,9 @@ const debounceFn = debounce(logFn,1000)
 `throttle` 函数用于确保一个函数在特定的时间间隔内不会被过度频繁地调用。具体而言，只有在经过规定的等待时间后且在此期间没有再次触发相关事件时，该函数才会执行。这在处理诸如窗口大小调整、滚动事件等可能频繁触发的场景中非常有用，可以有效避免函数执行过于频繁而导致的性能问题。
 
 #### 1.引入该方法
-在 Vue 项目（以 `App.vue` 文件为例）中，若要使用节流函数，需先从 @gg233o-x/my-tools 包中引入它。示例代码如下：
+在 Vue 项目（以 `App.vue` 文件为例）中，若要使用节流函数，需先从 toolspad 包中引入它。示例代码如下：
 ```ts title="App.vue"
-import {throttle} from '@gg233o-x/my-tools';
+import {throttle} from 'toolspad';
 ```
 
 #### 2.使用示例如下
@@ -56,7 +56,7 @@ const throttleFn = throttle(logFn,1000)
 #### 1.引入该方法
 在 Vue 项目（以 `App.vue` 文件为例）中，引入深拷贝函数的方式如下：
 ```ts title="App.vue"
-import {deepCopy} from '@gg233o-x/my-tools';
+import {deepCopy} from 'toolspad';
 ```
 
 #### 2.使用示例如下
@@ -84,7 +84,7 @@ console.log(obj1,'obj1');
 在 Vue 项目（以 `App.vue` 文件为例）中，引入时间格式化函数的方式如下：
 
 ```ts title="App.vue"
-import { formatDate } from '@gg233o-x/my-tools';
+import { formatDate } from 'toolspad';
 ```
 
 #### 2.输入参数
@@ -107,6 +107,9 @@ import { formatDate } from '@gg233o-x/my-tools';
     | `weeks` | `number`（可选） | 用于指定周数的偏移量。例如，`{ weeks: 1 }` 表示时间往后推一周（即获取下一周对应的时间），`{ weeks: -1 }` 则表示往前推一周（获取上一周对应的时间）。|
     | `months` | `number`（可选） | 用于指定月数的偏移量。像 `{ months: 2 }` 会使日期往后推 2 个月，传入负数则获取过去月份对应的日期。|
     | `years` | `number`（可选） | 用于指定年数的偏移量。比如 `{ years: 1 }` 能获取到明年对应的日期，传入负数则获取过去年份对应的日期。 |
+    | `hours` | `number`（可选） | 用于指定小时数的偏移量。比如 `{ hours: 1 }` 能获取到下个小时对应的时间，传入负数则获取上个小时对应的时间。 |
+    | `minutes` | `number`（可选） | 用于指定分钟的偏移量。比如 `{ minutes: 1 }` 能获取到下一分钟对应的时间，传入负数则获取上一分钟对应的时间。 |
+    | `seconds` | `number`（可选） | 用于指定秒的偏移量。比如 `{ seconds: 30 }` 能获取到三十秒后对应的时间，传入负数则获取三十秒前对应的时间。 |
 
 #### 3.使用示例如下
 
@@ -145,7 +148,7 @@ console.log('仅时间部分格式化：', timeOnly);
 在 Vue 项目（以 `App.vue` 文件为例）中，引入判断设备类型函数的方式如下：
 
 ```ts title="App.vue"
-import { checkDeviceType } from '@gg233o-x/my-tools';
+import { checkDeviceType } from 'toolspad';
 ```
 
 #### 2.使用示例如下
@@ -172,7 +175,7 @@ if (deviceType === 'Android') {
 在 Vue 项目（以 `App.vue` 文件为例）中，引入生成随机数函数的方式如下：
 
 ```ts title="App.vue"
-import { getRandom } from '@gg233o-x/my-tools';
+import { getRandom } from 'toolspad';
 ```
 
 #### 2.使用示例如下
@@ -197,7 +200,7 @@ if (randomNumber % 2 === 0) {
 在 Vue 项目（以 `App.vue` 文件为例）中，引入扁平转树函数的方式如下：
 
 ```ts title="App.vue"
-import { toTree } from '@gg233o-x/my-tools';
+import { toTree } from 'toolspad';
 ```
 
 #### 2.输入参数
@@ -268,7 +271,7 @@ console.log(toTree(data,'ID','pid')); // 打印转树后的数据
 在 Vue 项目（以 `App.vue` 文件为例）中，引入数组乱序函数的方式如下：
 
 ```ts title="App.vue"
-import { disorderArray } from '@gg233o-x/my-tools';
+import { disorderArray } from 'toolspad';
 ```
 
 #### 2.输入参数
@@ -292,7 +295,7 @@ console.log(disorderArray(arr)); // 打印乱序后的数组
 在基于 Vue 的项目中（以 `App.vue` 文件为例），引入 `compactArray` 函数的方式如下：
 
 ```ts title="App.vue"
-import { compactArray } from '@gg233o-x/my-tools';
+import { compactArray } from 'toolspad';
 ```
 
 #### 2.输入参数
@@ -317,7 +320,7 @@ import { compactArray } from '@gg233o-x/my-tools';
 在基于 Vue 的项目中（以 `App.vue` 文件为例），引入 `callNExec` 函数的方式如下：
 
 ```ts title="App.vue"
-import callNExec from '@gg233o-x/my-tools';
+import { callNExec } from 'toolspad';
 ```
 
 #### 2.输入参数

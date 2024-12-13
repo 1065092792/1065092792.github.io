@@ -1,10 +1,10 @@
 <template><div><h1 id="函数文档" tabindex="-1"><a class="header-anchor" href="#函数文档"><span>函数文档</span></a></h1>
-<p>欢迎您使用my-tools 函数库🎉!</p>
+<p>欢迎您使用tools-pad 函数库🎉!</p>
 <h3 id="防抖-debounce" tabindex="-1"><a class="header-anchor" href="#防抖-debounce"><span>防抖(debounce)</span></a></h3>
 <p><code v-pre>debounce</code> 函数的作用是确保一个函数在特定的时间间隔内不会被重复调用。只有当经过规定的等待时间后且没有再次触发相关事件时，该函数才会被执行。这在处理例如用户频繁点击按钮、文本输入实时搜索等场景时，能够有效减少不必要的函数执行次数，提升性能和用户体验。</p>
 <h4 id="_1-引入该方法" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法"><span>1.引入该方法</span></a></h4>
-<p>在 Vue 项目（以 <code v-pre>App.vue</code> 文件为例）中，若要使用防抖函数，按如下方式从 @gg233o-x/my-tools 包中引入：</p>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span>debounce<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
+<p>在 Vue 项目（以 <code v-pre>App.vue</code> 文件为例）中，若要使用防抖函数，按如下方式从 toolspad 包中引入：</p>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span>debounce<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'toolspad'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-使用示例如下" tabindex="-1"><a class="header-anchor" href="#_2-使用示例如下"><span>2.使用示例如下</span></a></h4>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token comment">// 首先定义一个普通函数，这里是简单的控制台输出函数</span></span>
@@ -20,8 +20,8 @@
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="节流-throttle" tabindex="-1"><a class="header-anchor" href="#节流-throttle"><span>节流(throttle)</span></a></h3>
 <p><code v-pre>throttle</code> 函数用于确保一个函数在特定的时间间隔内不会被过度频繁地调用。具体而言，只有在经过规定的等待时间后且在此期间没有再次触发相关事件时，该函数才会执行。这在处理诸如窗口大小调整、滚动事件等可能频繁触发的场景中非常有用，可以有效避免函数执行过于频繁而导致的性能问题。</p>
 <h4 id="_1-引入该方法-1" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-1"><span>1.引入该方法</span></a></h4>
-<p>在 Vue 项目（以 <code v-pre>App.vue</code> 文件为例）中，若要使用节流函数，需先从 @gg233o-x/my-tools 包中引入它。示例代码如下：</p>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span>throttle<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
+<p>在 Vue 项目（以 <code v-pre>App.vue</code> 文件为例）中，若要使用节流函数，需先从 toolspad 包中引入它。示例代码如下：</p>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span>throttle<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'toolspad'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-使用示例如下-1" tabindex="-1"><a class="header-anchor" href="#_2-使用示例如下-1"><span>2.使用示例如下</span></a></h4>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">const</span> <span class="token function-variable function">logFn</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span>
@@ -39,7 +39,7 @@
 <p><code v-pre>deepCopy</code> 函数用于创建一个原始对象的全新副本，新副本与原始对象在内存中完全独立，对原始对象的任何修改都不会影响到深拷贝后的对象，反之亦然。这在处理复杂数据结构（如嵌套对象、数组等）时非常关键，能够避免数据的意外篡改和副作用。</p>
 <h4 id="_1-引入该方法-2" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-2"><span>1.引入该方法</span></a></h4>
 <p>在 Vue 项目（以 <code v-pre>App.vue</code> 文件为例）中，引入深拷贝函数的方式如下：</p>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span>deepCopy<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span>deepCopy<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'toolspad'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-使用示例如下-2" tabindex="-1"><a class="header-anchor" href="#_2-使用示例如下-2"><span>2.使用示例如下</span></a></h4>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token comment">// 首先创建一个包含嵌套对象的示例对象 obj1</span></span>
@@ -61,7 +61,7 @@
 <p><code v-pre>formatDate</code> 函数是一个用于对日期时间进行灵活格式化，并可按需进行时间偏移操作的实用函数，它能帮助开发者方便地将 Date 对象按照指定格式转化为符合要求的字符串表示形式，同时支持根据给定的时间偏移量获取相对的过去或未来的时间后再进行格式化。</p>
 <h4 id="_1-引入该方法-3" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-3"><span>1.引入该方法</span></a></h4>
 <p>在 Vue 项目（以 <code v-pre>App.vue</code> 文件为例）中，引入时间格式化函数的方式如下：</p>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> formatDate <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> formatDate <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'toolspad'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数" tabindex="-1"><a class="header-anchor" href="#_2-输入参数"><span>2.输入参数</span></a></h4>
 <h5 id="date-参数" tabindex="-1"><a class="header-anchor" href="#date-参数"><span><code v-pre>date</code> 参数</span></a></h5>
@@ -72,7 +72,6 @@
 <h5 id="format-参数" tabindex="-1"><a class="header-anchor" href="#format-参数"><span><code v-pre>format</code> 参数</span></a></h5>
 <ul>
 <li><strong>类型</strong>：<code v-pre>String</code></li>
-<li><strong>默认值</strong>：<code v-pre>id</code></li>
 <li><strong>描述</strong>：用于指定日期时间最终的输出格式，格式字符串中可以包含特定的占位符（如 <code v-pre>YYYY</code>、<code v-pre>MM</code>、<code v-pre>DD</code>、<code v-pre>hh</code>、<code v-pre>mm</code>、<code v-pre>ss</code>），这些占位符会在函数内部被替换为对应的实际时间分量的字符串表示形式。例如，<code v-pre>'YYYY-MM-DD    hh:mm:ss'</code> 表示输出的格式会是类似 <code v-pre>2024-12-09 15:30:00</code> 的形式，展示完整的年、月、日、时、分、秒信息；而 <code v-pre>'MM/DD/YYYY'</code> 则会输出如 <code v-pre>12/09/2024</code> 的格式，按照月、日、年的顺序展示日期部分并用 <code v-pre>/</code> 进行分隔。</li>
 </ul>
 <h5 id="offset-参数-可选" tabindex="-1"><a class="header-anchor" href="#offset-参数-可选"><span><code v-pre>offset</code> 参数（可选）</span></a></h5>
@@ -114,6 +113,21 @@
 <td><code v-pre>number</code>（可选）</td>
 <td>用于指定年数的偏移量。比如 <code v-pre>{ years: 1 }</code> 能获取到明年对应的日期，传入负数则获取过去年份对应的日期。</td>
 </tr>
+<tr>
+<td><code v-pre>hours</code></td>
+<td><code v-pre>number</code>（可选）</td>
+<td>用于指定小时数的偏移量。比如 <code v-pre>{ hours: 1 }</code> 能获取到下个小时对应的时间，传入负数则获取上个小时对应的时间。</td>
+</tr>
+<tr>
+<td><code v-pre>minutes</code></td>
+<td><code v-pre>number</code>（可选）</td>
+<td>用于指定分钟的偏移量。比如 <code v-pre>{ minutes: 1 }</code> 能获取到下一分钟对应的时间，传入负数则获取上一分钟对应的时间。</td>
+</tr>
+<tr>
+<td><code v-pre>seconds</code></td>
+<td><code v-pre>number</code>（可选）</td>
+<td>用于指定秒的偏移量。比如 <code v-pre>{ seconds: 30 }</code> 能获取到三十秒后对应的时间，传入负数则获取三十秒前对应的时间。</td>
+</tr>
 </tbody>
 </table>
 </li>
@@ -148,7 +162,7 @@
 <p><code v-pre>checkDeviceType</code> 函数用于精准识别用户当前所使用设备的操作系统类别，其返回值明确区分设备是运行 <code v-pre>Android</code> 系统、<code v-pre>iOS</code> 系统还是属于<code v-pre>桌面端环境</code>。这在开发多端适配应用或根据不同设备类型提供特定功能与体验的场景中极为关键，能够帮助开发者依据设备特性灵活调整应用逻辑与界面展示。</p>
 <h4 id="_1-引入该方法-4" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-4"><span>1.引入该方法</span></a></h4>
 <p>在 Vue 项目（以 <code v-pre>App.vue</code> 文件为例）中，引入判断设备类型函数的方式如下：</p>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> checkDeviceType <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> checkDeviceType <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'toolspad'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-使用示例如下-3" tabindex="-1"><a class="header-anchor" href="#_2-使用示例如下-3"><span>2.使用示例如下</span></a></h4>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token comment">// 调用 checkDeviceType 函数来获取设备类型</span></span>
@@ -167,7 +181,7 @@
 <p><code v-pre>getRandom</code> 函数用于在指定的数值范围内生成一个随机整数，可满足项目中各种需要随机取值的场景，比如随机生成索引、模拟随机数据等。</p>
 <h4 id="_1-引入该方法-5" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-5"><span>1.引入该方法</span></a></h4>
 <p>在 Vue 项目（以 <code v-pre>App.vue</code> 文件为例）中，引入生成随机数函数的方式如下：</p>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> getRandom <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> getRandom <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'toolspad'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-使用示例如下-4" tabindex="-1"><a class="header-anchor" href="#_2-使用示例如下-4"><span>2.使用示例如下</span></a></h4>
 <div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token comment">// 调用getRandom函数来生成一个介于1（包含）和10（包含）之间的随机整数</span></span>
@@ -186,7 +200,7 @@
 <p><code v-pre>toTree</code> 函数用于将给定的扁平数据结构高效地转换为树状数据结构，使得数据呈现出清晰的父子层级关系。。</p>
 <h4 id="_1-引入该方法-6" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-6"><span>1.引入该方法</span></a></h4>
 <p>在 Vue 项目（以 <code v-pre>App.vue</code> 文件为例）中，引入扁平转树函数的方式如下：</p>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> toTree <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> toTree <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'toolspad'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数-1" tabindex="-1"><a class="header-anchor" href="#_2-输入参数-1"><span>2.输入参数</span></a></h4>
 <h5 id="data-参数" tabindex="-1"><a class="header-anchor" href="#data-参数"><span><code v-pre>data</code> 参数</span></a></h5>
@@ -247,7 +261,7 @@
 <p><code v-pre>disorderArray</code> 函数旨在对给定的数组进行随机打乱操作，改变数组元素原本的顺序，使其呈现出无序的状态，方便在诸如随机排序、模拟随机情况等场景下使用。</p>
 <h4 id="_1-引入该方法-7" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-7"><span>1.引入该方法</span></a></h4>
 <p>在 Vue 项目（以 <code v-pre>App.vue</code> 文件为例）中，引入数组乱序函数的方式如下：</p>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> disorderArray <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> disorderArray <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'toolspad'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数-2" tabindex="-1"><a class="header-anchor" href="#_2-输入参数-2"><span>2.输入参数</span></a></h4>
 <h5 id="arr-参数" tabindex="-1"><a class="header-anchor" href="#arr-参数"><span><code v-pre>arr</code> 参数</span></a></h5>
@@ -263,7 +277,7 @@
 <p><code v-pre>compactArray</code> 函数旨在对输入的数组进行过滤处理，它会精准地去除数组中那些在 JavaScript 里被视作 “假值” 的元素，包含 <code v-pre>false</code>、<code v-pre>null</code>、<code v-pre>0</code>、<code v-pre>&quot;&quot;</code>（空字符串）、<code v-pre>undefined</code> 和 <code v-pre>NaN</code> 等，只留下 “真值” 元素，以此生成一个新的数组。</p>
 <h4 id="_1-引入该方法-8" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-8"><span>1.引入该方法</span></a></h4>
 <p>在基于 Vue 的项目中（以 <code v-pre>App.vue</code> 文件为例），引入 <code v-pre>compactArray</code> 函数的方式如下：</p>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> compactArray <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> compactArray <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'toolspad'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数-3" tabindex="-1"><a class="header-anchor" href="#_2-输入参数-3"><span>2.输入参数</span></a></h4>
 <h5 id="arr-参数-1" tabindex="-1"><a class="header-anchor" href="#arr-参数-1"><span><code v-pre>arr</code> 参数</span></a></h5>
@@ -280,7 +294,7 @@
 <p><code v-pre>callNExec</code> 函数能够限制另一个函数的执行时机，仅当该函数被调用达到指定次数后，才会触发预先设定的函数执行操作，从而有效控制函数的调用频率与执行逻辑。</p>
 <h4 id="_1-引入该方法-9" tabindex="-1"><a class="header-anchor" href="#_1-引入该方法-9"><span>1.引入该方法</span></a></h4>
 <p>在基于 Vue 的项目中（以 <code v-pre>App.vue</code> 文件为例），引入 <code v-pre>callNExec</code> 函数的方式如下：</p>
-<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> callNExec <span class="token keyword">from</span> <span class="token string">'@gg233o-x/my-tools'</span><span class="token punctuation">;</span></span>
+<div class="language-typescript line-numbers-mode" data-highlighter="prismjs" data-ext="ts" data-title="App.vue"><pre v-pre><code><span class="line"><span class="token keyword">import</span> <span class="token punctuation">{</span> callNExec <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'toolspad'</span><span class="token punctuation">;</span></span>
 <span class="line"></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h4 id="_2-输入参数-4" tabindex="-1"><a class="header-anchor" href="#_2-输入参数-4"><span>2.输入参数</span></a></h4>
 <h5 id="threshold-参数" tabindex="-1"><a class="header-anchor" href="#threshold-参数"><span><code v-pre>threshold</code> 参数</span></a></h5>
