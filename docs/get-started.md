@@ -2,6 +2,50 @@
 
 欢迎您使用tools-pad 函数库:tada:!
 
+## 快速开始
+
+### 安装
+
+```bash
+npm install toolspad
+# 或者
+yarn add toolspad
+```
+
+### 使用
+
+```ts
+// 按需引入
+import { debounce, throttle } from 'toolspad';
+
+// 或者全量引入
+import toolspad from 'toolspad';
+```
+
+### 示例
+
+```ts
+// 防抖示例
+const debouncedFn = debounce(() => {
+  console.log('执行防抖函数');
+}, 1000);
+
+// 节流示例
+const throttledFn = throttle(() => {
+  console.log('执行节流函数');
+}, 1000);
+```
+
+::: tip 提示
+toolspad 提供了丰富的工具函数，您可以根据实际需求按需引入使用。每个函数都经过精心设计和测试，确保其可靠性和易用性。
+:::
+
+::: warning 注意
+在使用某些函数时，请注意查看具体的参数要求和返回值说明，以确保正确使用。
+:::
+
+## 函数控制类
+
 ### 防抖(debounce)
 
 `debounce` 函数的作用是确保一个函数在特定的时间间隔内不会被重复调用。只有当经过规定的等待时间后且没有再次触发相关事件时，该函数才会被执行。这在处理例如用户频繁点击按钮、文本输入实时搜索等场景时，能够有效减少不必要的函数执行次数，提升性能和用户体验。
@@ -48,6 +92,100 @@ const throttleFn = throttle(logFn,1000)
 // 它会按照节流规则执行，即每隔1000毫秒才会真正执行一次logFn函数
 ```
 
+### 函数调用次数限制执行（callNExec）
+
+`callNExec` 函数能够限制另一个函数的执行时机，仅当该函数被调用达到指定次数后，才会触发预先设定的函数执行操作，从而有效控制函数的调用频率与执行逻辑。
+
+#### 1.引入该方法
+在基于 Vue 的项目中（以 `App.vue` 文件为例），引入 `callNExec` 函数的方式如下：
+
+```ts title="App.vue"
+import { callNExec } from 'toolspad';
+```
+
+#### 2.输入参数
+##### `threshold` 参数
+- **类型**：`Number`
+- **描述**：设定的函数被调用次数阈值。
+
+##### `func` 参数
+- **类型**：`Function`
+- **描述**：当函数被调用 n 次后需要执行的函数。
+
+#### 3.使用示例如下
+
+```ts title="App.vue" 
+const fn = () => {
+  console.log('执行');
+}
+const testFn = callNExec(10, fn)   // 每调用10次执行 则执行一次fn函数
+
+for (let index = 0; index <= 30; index++) {
+  testFn()
+}
+```
+
+### 可配置时间间隔的函数包装器（createIntervalFn）
+
+`createIntervalFn` 函数用于创建一个可配置时间间隔的函数包装器，支持本地持久化存储上次执行时间，确保函数按照指定的时间间隔执行。这对于需要定期执行某些操作（如数据同步、状态检查等）的场景非常有用。
+
+#### 1.引入该方法
+在基于 Vue 的项目中（以 `App.vue` 文件为例），引入 `createIntervalFn` 函数的方式如下：
+
+```ts title="App.vue"
+import { createIntervalFn } from 'toolspad';
+```
+
+#### 2.输入参数
+##### `func` 参数
+- **类型**：`Function | null`
+- **描述**：需要定期执行的函数，可以为 null。
+
+##### `options` 参数
+- **类型**：`Object`
+- **描述**：配置选项对象，包含以下属性：
+  - `key`（必填）：用于本地存储的唯一标识符
+  - `interval`（可选）：间隔数值，默认为 1
+  - `unit`（可选）：时间单位，可选值包括：'second'、'minute'、'hour'、'day'、'month'、'year'，默认为 'day'
+
+#### 3.使用示例如下
+
+```ts title="App.vue" 
+// 创建一个每天执行一次的函数
+const dailyTask = createIntervalFn(() => {
+  console.log('执行每日任务');
+}, {
+  key: 'dailyTask',
+  interval: 1,
+  unit: 'day'
+});
+
+// 创建一个每小时执行一次的函数
+const hourlyTask = createIntervalFn(() => {
+  console.log('执行每小时任务');
+}, {
+  key: 'hourlyTask',
+  interval: 1,
+  unit: 'hour'
+});
+
+// 创建一个每30分钟执行一次的函数
+const halfHourTask = createIntervalFn(() => {
+  console.log('执行每30分钟任务');
+}, {
+  key: 'halfHourTask',
+  interval: 30,
+  unit: 'minute'
+});
+
+// 调用这些函数
+dailyTask();
+hourlyTask();
+halfHourTask();
+```
+
+## 数据处理类
+
 ### 深拷贝(deepCopy)
 
 `deepCopy` 函数用于创建一个原始对象的全新副本，新副本与原始对象在内存中完全独立，对原始对象的任何修改都不会影响到深拷贝后的对象，反之亦然。这在处理复杂数据结构（如嵌套对象、数组等）时非常关键，能够避免数据的意外篡改和副作用。
@@ -76,6 +214,122 @@ console.log(obj2,'obj2');
 // 输出原始对象 obj1，其嵌套属性的值已被修改为 'dataChange'
 console.log(obj1,'obj1'); 
 ```
+
+### 扁平转树（toTree）
+
+`toTree` 函数用于将给定的扁平数据结构高效地转换为树状数据结构，使得数据呈现出清晰的父子层级关系。。
+#### 1.引入该方法
+在 Vue 项目（以 `App.vue` 文件为例）中，引入扁平转树函数的方式如下：
+
+```ts title="App.vue"
+import { toTree } from 'toolspad';
+```
+
+#### 2.输入参数
+##### `data` 参数
+- **类型**：`Array`
+- **描述**：需要用户传入一个扁平化数据。
+
+##### `idKey` 参数（可选）
+- **类型**：`String`
+- **默认值**：`id`
+- **描述**：用于指定在扁平数据节点对象中作为节点唯一标识的键名。
+
+##### `parentIdKey` 参数（可选）
+- **类型**：`String`
+- **默认值**：`parentId`
+- **描述**：用于指定在扁平数据节点对象中作为父节点标识的键名。
+
+
+#### 3.使用示例如下
+
+```ts title="App.vue" 
+const data = [
+{ "id": 1, "name": "用户中心", "orderNum": 1, "parentId": 0 },
+{ "id": 2, "name": "订单中心", "orderNum": 2, "parentId": 0 },
+{ "id": 3, "name": "系统管理", "orderNum": 3, "parentId": 0 },
+{ "id": 12, "name": "所有订单", "orderNum": 1, "parentId": 2 },
+{ "id": 14, "name": "待发货", "orderNum": 1.2, "parentId": 2 },
+{ "id": 15, "name": "订单导出", "orderNum": 2, "parentId": 2 },
+{ "id": 18, "name": "菜单设置", "orderNum": 1, "parentId": 3 },
+{ "id": 19, "name": "权限管理", "orderNum": 2, "parentId": 3 },
+{ "id": 21, "name": "系统权限", "orderNum": 1, "parentId": 19 },
+{ "id": 22, "name": "角色设置", "orderNum": 2, "parentId": 19 },
+];
+
+console.log(toTree(data)); // 打印转树后的数据
+```
+
+::: tip
+用户自定义节点 代码实例如下：
+:::
+```ts title="App.vue" 
+
+const data = [
+{ "ID": 1, "name": "用户中心", "orderNum": 1, "pid": 0 },
+{ "ID": 2, "name": "订单中心", "orderNum": 2, "pid": 0 },
+{ "ID": 3, "name": "系统管理", "orderNum": 3, "pid": 0 },
+{ "ID": 12, "name": "所有订单", "orderNum": 1, "pid": 2 },
+{ "ID": 14, "name": "待发货", "orderNum": 1.2, "pid": 2 },
+{ "ID": 15, "name": "订单导出", "orderNum": 2, "pid": 2 },
+{ "ID": 18, "name": "菜单设置", "orderNum": 1, "pid": 3 },
+{ "ID": 19, "name": "权限管理", "orderNum": 2, "pid": 3 },
+{ "ID": 21, "name": "系统权限", "orderNum": 1, "pid": 19 },
+{ "ID": 22, "name": "角色设置", "orderNum": 2, "pid": 19 },
+];
+
+console.log(toTree(data,'ID','pid')); // 打印转树后的数据
+```
+
+
+### 数组乱序（disorderArray）
+
+`disorderArray` 函数旨在对给定的数组进行随机打乱操作，改变数组元素原本的顺序，使其呈现出无序的状态，方便在诸如随机排序、模拟随机情况等场景下使用。
+
+#### 1.引入该方法
+在 Vue 项目（以 `App.vue` 文件为例）中，引入数组乱序函数的方式如下：
+
+```ts title="App.vue"
+import { disorderArray } from 'toolspad';
+```
+
+#### 2.输入参数
+##### `arr` 参数
+- **类型**：`Array`
+- **描述**：用户需要传入一个希望进行乱序操作的数组。无论数组元素是何种类型，函数都会尝试对其顺序进行打乱处理。
+
+#### 3.使用示例如下
+
+```ts title="App.vue" 
+const arr = [1,2,3,4,5,6,7,8,9,undefined,null,function fn(){},'str']
+console.log(disorderArray(arr)); // 打印乱序后的数组
+```
+
+
+### 数组滤假值（compactArray）
+
+`compactArray` 函数旨在对输入的数组进行过滤处理，它会精准地去除数组中那些在 JavaScript 里被视作 "假值" 的元素，包含 `false`、`null`、`0`、`""`（空字符串）、`undefined` 和 `NaN` 等，只留下 "真值" 元素，以此生成一个新的数组。
+
+#### 1.引入该方法
+在基于 Vue 的项目中（以 `App.vue` 文件为例），引入 `compactArray` 函数的方式如下：
+
+```ts title="App.vue"
+import { compactArray } from 'toolspad';
+```
+
+#### 2.输入参数
+##### `arr` 参数
+- **类型**：`Array`
+- **描述**：用户需要向函数提供一个想要进行滤假值操作的目标数组。
+
+#### 3.使用示例如下
+
+```ts title="App.vue" 
+  const arr = ['',false,null,undefined,0,10,20]
+  console.log(compactArray(arr)); // 输出结果 [10,20]
+```
+
+## 工具类
 
 ### 时间格式化函数（formatDate）
 
@@ -192,189 +446,3 @@ if (randomNumber % 2 === 0) {
   console.log('随机数为奇数，执行其他相关操作，比如隐藏某个元素。');
 }
 ```
-
-### 扁平转树（toTree）
-
-`toTree` 函数用于将给定的扁平数据结构高效地转换为树状数据结构，使得数据呈现出清晰的父子层级关系。。
-#### 1.引入该方法
-在 Vue 项目（以 `App.vue` 文件为例）中，引入扁平转树函数的方式如下：
-
-```ts title="App.vue"
-import { toTree } from 'toolspad';
-```
-
-#### 2.输入参数
-##### `data` 参数
-- **类型**：`Array`
-- **描述**：需要用户传入一个扁平化数据。
-
-##### `idKey` 参数（可选）
-- **类型**：`String`
-- **默认值**：`id`
-- **描述**：用于指定在扁平数据节点对象中作为节点唯一标识的键名。
-
-##### `parentIdKey` 参数（可选）
-- **类型**：`String`
-- **默认值**：`parentId`
-- **描述**：用于指定在扁平数据节点对象中作为父节点标识的键名。
-
-
-#### 3.使用示例如下
-
-```ts title="App.vue" 
-const data = [
-{ "id": 1, "name": "用户中心", "orderNum": 1, "parentId": 0 },
-{ "id": 2, "name": "订单中心", "orderNum": 2, "parentId": 0 },
-{ "id": 3, "name": "系统管理", "orderNum": 3, "parentId": 0 },
-{ "id": 12, "name": "所有订单", "orderNum": 1, "parentId": 2 },
-{ "id": 14, "name": "待发货", "orderNum": 1.2, "parentId": 2 },
-{ "id": 15, "name": "订单导出", "orderNum": 2, "parentId": 2 },
-{ "id": 18, "name": "菜单设置", "orderNum": 1, "parentId": 3 },
-{ "id": 19, "name": "权限管理", "orderNum": 2, "parentId": 3 },
-{ "id": 21, "name": "系统权限", "orderNum": 1, "parentId": 19 },
-{ "id": 22, "name": "角色设置", "orderNum": 2, "parentId": 19 },
-];
-
-console.log(toTree(data)); // 打印转树后的数据
-```
-
-::: tip
-用户自定义节点 代码实例如下：
-:::
-```ts title="App.vue" 
-
-const data = [
-{ "ID": 1, "name": "用户中心", "orderNum": 1, "pid": 0 },
-{ "ID": 2, "name": "订单中心", "orderNum": 2, "pid": 0 },
-{ "ID": 3, "name": "系统管理", "orderNum": 3, "pid": 0 },
-{ "ID": 12, "name": "所有订单", "orderNum": 1, "pid": 2 },
-{ "ID": 14, "name": "待发货", "orderNum": 1.2, "pid": 2 },
-{ "ID": 15, "name": "订单导出", "orderNum": 2, "pid": 2 },
-{ "ID": 18, "name": "菜单设置", "orderNum": 1, "pid": 3 },
-{ "ID": 19, "name": "权限管理", "orderNum": 2, "pid": 3 },
-{ "ID": 21, "name": "系统权限", "orderNum": 1, "pid": 19 },
-{ "ID": 22, "name": "角色设置", "orderNum": 2, "pid": 19 },
-];
-
-console.log(toTree(data,'ID','pid')); // 打印转树后的数据
-```
-
-
- 
-## 数组方法
-
-### 数组乱序（disorderArray）
-
-`disorderArray` 函数旨在对给定的数组进行随机打乱操作，改变数组元素原本的顺序，使其呈现出无序的状态，方便在诸如随机排序、模拟随机情况等场景下使用。
-
-#### 1.引入该方法
-在 Vue 项目（以 `App.vue` 文件为例）中，引入数组乱序函数的方式如下：
-
-```ts title="App.vue"
-import { disorderArray } from 'toolspad';
-```
-
-#### 2.输入参数
-##### `arr` 参数
-- **类型**：`Array`
-- **描述**：用户需要传入一个希望进行乱序操作的数组。无论数组元素是何种类型，函数都会尝试对其顺序进行打乱处理。
-
-#### 3.使用示例如下
-
-```ts title="App.vue" 
-const arr = [1,2,3,4,5,6,7,8,9,undefined,null,function fn(){},'str']
-console.log(disorderArray(arr)); // 打印乱序后的数组
-```
-
-
-### 数组滤假值（compactArray）
-
-`compactArray` 函数旨在对输入的数组进行过滤处理，它会精准地去除数组中那些在 JavaScript 里被视作 “假值” 的元素，包含 `false`、`null`、`0`、`""`（空字符串）、`undefined` 和 `NaN` 等，只留下 “真值” 元素，以此生成一个新的数组。
-
-#### 1.引入该方法
-在基于 Vue 的项目中（以 `App.vue` 文件为例），引入 `compactArray` 函数的方式如下：
-
-```ts title="App.vue"
-import { compactArray } from 'toolspad';
-```
-
-#### 2.输入参数
-##### `arr` 参数
-- **类型**：`Array`
-- **描述**：用户需要向函数提供一个想要进行滤假值操作的目标数组。
-
-#### 3.使用示例如下
-
-```ts title="App.vue" 
-  const arr = ['',false,null,undefined,0,10,20]
-  console.log(compactArray(arr)); // 输出结果 [10,20]
-```
-
-## 函数方法
-
-### 函数调用次数限制执行（callNExec）
-
-`callNExec` 函数能够限制另一个函数的执行时机，仅当该函数被调用达到指定次数后，才会触发预先设定的函数执行操作，从而有效控制函数的调用频率与执行逻辑。
-
-#### 1.引入该方法
-在基于 Vue 的项目中（以 `App.vue` 文件为例），引入 `callNExec` 函数的方式如下：
-
-```ts title="App.vue"
-import { callNExec } from 'toolspad';
-```
-
-#### 2.输入参数
-##### `threshold` 参数
-- **类型**：`Number`
-- **描述**：设定的函数被调用次数阈值。
-
-##### `func` 参数
-- **类型**：`Function`
-- **描述**：当函数被调用 n 次后需要执行的函数。
-
-#### 3.使用示例如下
-
-```ts title="App.vue" 
-const fn = () => {
-  console.log('执行');
-}
-const testFn = callNExec(10, fn)   // 每调用10次执行 则执行一次fn函数
-
-for (let index = 0; index <= 30; index++) {
-  testFn()
-}
-```
-
-
-
-
-<!-- ## Configuration
-
-VuePress use a `.vuepress/config.js`(or .ts) file as [site configuration][config], you can use it to config your site.
-
-For [client side configuration][client-config], you can create `.vuepress/client.js`(or .ts).
-
-Meanwhile, you can also add configuration per page with [frontmatter][].
-
-## Layouts and customization
-
-Here are common configuration controlling layout of `@vuepress/theme-default`:
-
-- [navbar][]
-- [sidebar][]
-
-Check [default theme docs][default-theme] for full reference.
-
-You can [add extra style][style] with `.vuepress/styles/index.scss` file.
-
-[routing]: https://vuejs.press/guide/page.html#routing
-[content]: https://vuejs.press/guide/page.html#content
-[synatex-extensions]: https://vuejs.press/guide/markdown.html#syntax-extensions
-[vue-feature]: https://vuejs.press/guide/markdown.html#using-vue-in-markdown
-[config]: https://vuejs.press/guide/configuration.html#client-config-file
-[client-config]: https://vuejs.press/guide/configuration.html#client-config-file
-[frontmatter]: https://vuejs.press/guide/page.html#frontmatter
-[navbar]: https://vuejs.press/reference/default-theme/config.html#navbar
-[sidebar]: https://vuejs.press/reference/default-theme/config.html#sidebar
-[default-theme]: https://vuejs.press/reference/default-theme/
-[style]: https://vuejs.press/reference/default-theme/styles.html#style-file -->

@@ -1,6 +1,6 @@
 {
   "name": "toolspad-document",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "Some commonly used front-end utility functions are simple and easy to use.",
   "license": "GPL",
   "type": "module",
